@@ -111,6 +111,12 @@ section{padding-block:clamp(3.5rem,8vw,5.5rem)}
   .prod .price{grid-column:1;grid-row:2;text-align:left}
   .prod .step{grid-column:2;grid-row:1 / span 2}
 }
+.badge{display:inline-block;margin-top:.4rem;font-size:.8rem;font-weight:600;padding:.15rem .55rem}
+.badge.out{background:var(--line);color:var(--ink)}
+.badge.low{background:var(--orange);color:#1d1d1d}
+.prod.soldout h3,.prod.soldout .price{opacity:.5}
+.notify{font-size:.9rem;padding:.55rem .8rem;min-height:44px}
+@media (max-width:560px){.prod .notify{grid-column:2;grid-row:1 / span 2}}
 .minnote{font-size:.8rem;color:var(--orange);font-weight:600}
 
 .basket{position:sticky;top:88px;background:var(--surface);padding:1.4rem;border-top:6px solid var(--orange)}
@@ -392,6 +398,7 @@ footer a:hover{color:var(--orange)}
     <details><summary>Is there a minimum order?</summary><p>No minimum for eggs and chicken. Day-old chicks are sold from 50 upwards so they travel warm and safe.</p></details>
     <details><summary>What if something is wrong with my order?</summary><p>Check your order when the rider arrives. Cracked eggs or a problem bird are replaced on the spot or on the next delivery.</p></details>
     <details><summary>Can I pay before delivery?</summary><p>Yes. Pay to our Buy Goods Till 3267707 and put the M-Pesa confirmation code in your order. The name shown on the M-Pesa message confirms you are paying Shadoro.</p></details>
+    <details><summary>What if an item runs out after I pay?</summary><p>We check stock before every delivery. If something you paid for has run out, we call you the same day and you choose: a replacement, delivery on the next day it is available, or a full refund to your M-Pesa within 24 hours.</p></details>
     <details><summary>Where exactly is the farm?</summary><p>Our office is at Monami Building, Nairobi Road, Ahero. You are welcome to collect orders there. Tell us on WhatsApp so we have it ready.</p></details>
   </div>
 </section>
@@ -432,20 +439,26 @@ footer a:hover{color:var(--orange)}
 const WHATSAPP = "254726510856";           // number that receives orders (no + or spaces)
 const TILL = "3267707";                    // Safaricom Buy Goods till
 // Leave empty until your Cloudflare Worker is live, then paste its address, e.g. "https://shadoro-pay.yourname.workers.dev"
-const PAY_ENDPOINT = "https://shadoro-pay.shadoroltd.workers.dev";
+const PAY_ENDPOINT = "";
 const FARM = { name:"Ahero (farm)", lat:-0.1745, lon:34.9186 };
 
+// OPTIONAL: a published Google Sheet (CSV link) to update prices and stock from your phone.
+// Columns: id, price, stock, left, note. Leave "" to use the list below.
+const STOCK_SHEET_URL = "";
+
 // Prices are placeholders — replace with your real prices.
+// stock: "in" = available, "low" = few left (also set left: number), "out" = sold out.
+// note: shown when sold out, e.g. note:"Back on Monday".
 const PRODUCTS = [
-  { id:"egg-l",  cat:"Eggs",    name:"Eggs, tray of 30",          desc:"Fresh layer eggs, graded medium to large.",          price:420,  unit:"per tray" },
-  { id:"egg-k",  cat:"Eggs",    name:"Kienyeji eggs, tray of 30", desc:"From free-range improved kienyeji hens.",            price:600,  unit:"per tray" },
-  { id:"kie-l",  cat:"Chicken", name:"Kienyeji chicken, live",    desc:"Mature improved kienyeji, about 2 kg.",              price:900,  unit:"per bird" },
-  { id:"kie-d",  cat:"Chicken", name:"Kienyeji chicken, dressed", desc:"Slaughtered, cleaned and packed.",                   price:1000, unit:"per bird" },
-  { id:"bro-l",  cat:"Chicken", name:"Broiler, live",             desc:"Six-week broiler, about 2 kg.",                      price:600,  unit:"per bird" },
-  { id:"bro-d",  cat:"Chicken", name:"Broiler, dressed",          desc:"Slaughtered, cleaned and packed.",                   price:700,  unit:"per bird" },
-  { id:"chick",  cat:"For farmers", name:"Day-old chicks",        desc:"Improved kienyeji, vaccinated against Marek's.",     price:110,  unit:"per chick", min:50, stepBy:10 },
-  { id:"pol",    cat:"For farmers", name:"Point-of-lay hens",     desc:"18 to 20 weeks, ready to start laying.",             price:850,  unit:"per hen" },
-  { id:"manure", cat:"For farmers", name:"Chicken manure",        desc:"Dry, bagged. Good for kitchen gardens and shambas.", price:300,  unit:"per bag" }
+  { id:"egg-l",  cat:"Eggs",    name:"Eggs, tray of 30",          desc:"Fresh layer eggs, graded medium to large.",          price:420,  unit:"per tray", stock:"in" },
+  { id:"egg-k",  cat:"Eggs",    name:"Kienyeji eggs, tray of 30", desc:"From free-range improved kienyeji hens.",            price:600,  unit:"per tray", stock:"in" },
+  { id:"kie-l",  cat:"Chicken", name:"Kienyeji chicken, live",    desc:"Mature improved kienyeji, about 2 kg.",              price:900,  unit:"per bird", stock:"in" },
+  { id:"kie-d",  cat:"Chicken", name:"Kienyeji chicken, dressed", desc:"Slaughtered, cleaned and packed.",                   price:1000, unit:"per bird", stock:"in" },
+  { id:"bro-l",  cat:"Chicken", name:"Broiler, live",             desc:"Six-week broiler, about 2 kg.",                      price:600,  unit:"per bird", stock:"in" },
+  { id:"bro-d",  cat:"Chicken", name:"Broiler, dressed",          desc:"Slaughtered, cleaned and packed.",                   price:700,  unit:"per bird", stock:"in" },
+  { id:"chick",  cat:"For farmers", name:"Day-old chicks",        desc:"Improved kienyeji, vaccinated against Marek's.",     price:110,  unit:"per chick", min:50, stepBy:10, stock:"in" },
+  { id:"pol",    cat:"For farmers", name:"Point-of-lay hens",     desc:"18 to 20 weeks, ready to start laying.",             price:850,  unit:"per hen", stock:"in" },
+  { id:"manure", cat:"For farmers", name:"Chicken manure",        desc:"Dry, bagged. Good for kitchen gardens and shambas.", price:300,  unit:"per bag", stock:"in" }
 ];
 
 // Delivery rings in km from the farm. Fee in KES, and how soon it arrives.
@@ -488,6 +501,53 @@ function km(a,b){
 function zoneFor(d){ return ZONES.find(z=>d<=z.upto) || BEYOND; }
 AREAS.forEach(a=>a.km=km(FARM,a));
 
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+/* ---------- stock from Google Sheet (optional) ---------- */
+function parseCSV(t){
+  const rows=[];let row=[],cell="",q=false;
+  for(let i=0;i<t.length;i++){const c=t[i];
+    if(q){ if(c==='"'&&t[i+1]==='"'){cell+='"';i++;} else if(c==='"') q=false; else cell+=c; }
+    else if(c==='"') q=true; else if(c===","){row.push(cell);cell="";}
+    else if(c==="\n"||c==="\r"){ if(c==="\r"&&t[i+1]==="\n") i++; row.push(cell);rows.push(row);row=[];cell=""; }
+    else cell+=c; }
+  if(cell||row.length){row.push(cell);rows.push(row);}
+  return rows;
+}
+function applyStock(rows){
+  if(!rows.length) return;
+  const head=rows[0].map(x=>x.trim().toLowerCase()), col=n=>head.indexOf(n), get=(r,n)=>col(n)>=0?(r[col(n)]||"").trim():"";
+  rows.slice(1).forEach(r=>{
+    const p=PRODUCTS.find(x=>x.id===get(r,"id")); if(!p) return;
+    const price=parseInt(get(r,"price").replace(/[^0-9]/g,""),10); if(price>0) p.price=price;
+    const s=get(r,"stock").toLowerCase(); if(["in","low","out"].includes(s)) p.stock=s;
+    const left=parseInt(get(r,"left"),10); p.left = left>0 ? left : undefined;
+    if(col("note")>=0) p.note=get(r,"note");
+  });
+}
+function dropUnavailable(){
+  const changed=[];
+  Object.keys(cart).forEach(id=>{const p=PRODUCTS.find(x=>x.id===id);
+    if(p.stock==="out"){changed.push(p.name+" is sold out");delete cart[id];}
+    else if(p.stock==="low"&&p.left&&cart[id]>p.left){cart[id]=p.left;changed.push(p.name+" reduced to "+p.left);}});
+  if(changed.length) $("err").textContent="Stock changed: "+changed.join(", ")+". Check your total.";
+  return changed.length>0;
+}
+async function loadStock(){
+  if(!STOCK_SHEET_URL) return;
+  try{
+    const r=await fetch(STOCK_SHEET_URL+(STOCK_SHEET_URL.includes("?")?"&":"?")+"t="+Date.now());
+    if(!r.ok) return;
+    applyStock(parseCSV(await r.text()));
+  }catch(e){ /* keep the built-in list if the sheet can't be read */ }
+}
+async function refreshStock(){
+  await loadStock();
+  const changed = stkPaid ? false : dropUnavailable();
+  renderProducts(); renderBasket();
+  return changed;
+}
+
 /* ---------- products ---------- */
 function renderCats(){
   const cats=["All",...new Set(PRODUCTS.map(p=>p.cat))];
@@ -500,8 +560,14 @@ $("cats").addEventListener("click",e=>{
 function renderProducts(){
   $("plist").innerHTML=PRODUCTS.filter(p=>filter==="All"||p.cat===filter).map(p=>{
     const q=cart[p.id]||0;
+    const badge = p.stock==="out" ? `<span class="badge out">Sold out${p.note?". "+esc(p.note):""}</span>`
+                : p.stock==="low" && p.left ? `<span class="badge low">Only ${p.left} left</span>` : "";
+    if(p.stock==="out") return `<li class="prod soldout" data-id="${p.id}">
+      <div><h3>${p.name}</h3><p class="desc">${p.desc}</p>${badge}</div>
+      <div class="price"><strong>${fmt(p.price)}</strong><span>${p.unit}</span></div>
+      <a class="btn btn-line notify" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, please tell me when "+p.name+" is back in stock.")}">Tell me when it's back</a></li>`;
     return `<li class="prod ${q?"on":""}" data-id="${p.id}">
-      <div><h3>${p.name}</h3><p class="desc">${p.desc}${p.min?` <span class="minnote">Minimum ${p.min}.</span>`:""}</p></div>
+      <div><h3>${p.name}</h3><p class="desc">${p.desc}${p.min?` <span class="minnote">Minimum ${p.min}.</span>`:""}</p>${badge}</div>
       <div class="price"><strong>${fmt(p.price)}</strong><span>${p.unit}</span></div>
       <div class="step">
         <button type="button" data-d="-1" aria-label="Remove one ${p.name}">−</button>
@@ -516,8 +582,14 @@ $("plist").addEventListener("click",e=>{
   const id=b.closest("[data-id]").dataset.id, p=PRODUCTS.find(x=>x.id===id);
   const step=p.stepBy||1, min=p.min||1;
   let q=cart[id]||0;
-  if(+b.dataset.d>0) q = q===0 ? min : q+step;
+  if(p.stock==="out") return;
+  if(+b.dataset.d>0){
+    const next = q===0 ? min : q+step;
+    if(p.stock==="low" && p.left && next>p.left){ $("err").textContent=`Only ${p.left} left of ${p.name} today. Message us on WhatsApp for more.`; return; }
+    q=next;
+  }
   else q = q-step < min ? 0 : q-step;
+  $("err").textContent="";
   if(q) cart[id]=q; else delete cart[id];
   renderProducts(); renderBasket();
 });
@@ -569,8 +641,10 @@ function syncSelects(source){
 $("o-area").addEventListener("change",e=>setArea(e.target.value,"o"));
 $("d-area").addEventListener("change",e=>setArea(e.target.value,"d"));
 
-$("send").addEventListener("click",()=>{
-  const ids=Object.keys(cart), err=$("err");
+$("send").addEventListener("click",async()=>{
+  const err=$("err");
+  if(await refreshStock()) return;
+  const ids=Object.keys(cart);
   if(!ids.length){err.textContent="Add at least one item to your order.";return;}
   if(!area){err.textContent="Choose your delivery area so we can plan the trip.";$("o-area").focus();return;}
   if(!$("o-name").value.trim()){err.textContent="Add your name so the rider knows who to ask for.";$("o-name").focus();return;}
@@ -623,6 +697,8 @@ $("stk").addEventListener("click",async()=>{
   if(!Object.keys(cart).length){err.textContent="Add at least one item before paying.";return;}
   if(!area){err.textContent="Choose your delivery area so the total includes delivery.";$("o-area").focus();return;}
   if(t.z.fee==null){err.textContent="We need to quote delivery to your area first. Ask us on WhatsApp.";return;}
+  if(await refreshStock()){ msg.textContent="Your order changed because of stock. Check the total, then send the prompt again."; return; }
+  if(!Object.keys(cart).length){err.textContent="Sorry, the items in your order have just sold out.";return;}
   const phone=normPhone($("o-phone").value);
   if(!phone){err.textContent="Enter a Safaricom number like 0712 345 678.";$("o-phone").focus();return;}
   err.textContent=""; btn.disabled=true; msg.textContent="Sending the prompt to your phone…";
@@ -701,7 +777,7 @@ $("rings").addEventListener("keydown",e=>{const g=e.target.closest(".town");if(g
 $("float-wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, I would like to ask about eggs and chicken.")}`;
 $("bulk-wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, we are an institution and would like a quote for weekly supply of eggs/chicken.\nInstitution:\nLocation:\nWeekly quantity:")}`;
 
-renderCats(); renderProducts(); renderBasket(); drawRings();
+renderCats(); renderProducts(); renderBasket(); drawRings(); refreshStock();
 </script>
 </body>
 </html>
