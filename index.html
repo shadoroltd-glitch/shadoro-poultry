@@ -6,6 +6,7 @@
 <title>Shadoro Poultry — Fresh eggs & chicken delivered around Ahero and Kisumu</title>
 <meta name="description" content="Order fresh eggs, kienyeji and broiler chicken, chicks and point-of-lay hens from Shadoro Limited, Ahero. Delivery across Nyando, Kisumu and Muhoroni. Pay by M-Pesa Till 3267707 or on delivery.">
 <!-- When you self-host: paste your Meta Pixel base code here so Facebook can measure who clicked "Send order on WhatsApp". -->
+<link rel="preload" as="image" href="poster-hens.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,7 +49,8 @@ p{margin:0 0 1rem;max-width:62ch}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none}
 .mark{font-family:var(--display);font-size:1.6rem;line-height:1;display:grid;place-items:center;width:40px;height:40px;background:var(--char);color:var(--yolk)}
-.brand b{font-family:var(--display);font-weight:400;font-size:1.3rem;letter-spacing:.02em}
+.brand b{font-family:var(--display);font-weight:400;font-size:1.3rem;letter-spacing:.02em;white-space:nowrap}
+.brand small{white-space:nowrap}
 .brand small{display:block;font-size:.75rem;color:var(--muted);margin-top:-2px}
 .nav{display:flex;gap:1.4rem;align-items:center}
 .nav a{text-decoration:none;font-weight:500;font-size:.95rem}
@@ -74,13 +76,22 @@ p{margin:0 0 1rem;max-width:62ch}
 .hero p{color:#e4e2dc;font-size:1.15rem;margin-top:1.1rem}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
 .hero .note{font-size:.9rem;color:#cfccc4;margin-top:1rem}
-.tray{width:100%;max-width:440px;justify-self:center;filter:drop-shadow(0 14px 22px rgba(0,0,0,.28))}
+.posters{width:100%;max-width:400px;justify-self:center}
+.deck{position:relative;aspect-ratio:4/5;box-shadow:0 18px 30px rgba(0,0,0,.3)}
+.poster{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .6s ease}
+.poster.on{opacity:1}
+.poster .ph{font-family:Anton,Impact,"Arial Narrow Bold",sans-serif}
+.poster .ps{font-family:"Work Sans",Arial,sans-serif;font-weight:600}
+.dots{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
+.dots button{width:30px;height:30px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff;opacity:.45}
+.dots button[aria-current="true"]::after{opacity:1;background:var(--yolk)}
 @media (max-width:820px){
   .hero .wrap{grid-template-columns:1fr}
   .s1{width:100%;height:36%;top:auto;bottom:0;clip-path:polygon(0 45%,100% 0,100% 100%,0 100%)}
   .s2{width:60%;height:24%;top:auto;bottom:0;clip-path:polygon(100% 0,100% 100%,0 100%)}
   .s3{display:none}
-  .tray{max-width:300px}
+  .posters{max-width:320px}
 }
 
 section{padding-block:clamp(3.5rem,8vw,5.5rem)}
@@ -117,6 +128,7 @@ section{padding-block:clamp(3.5rem,8vw,5.5rem)}
 .prod.soldout h3,.prod.soldout .price{opacity:.5}
 .notify{font-size:.9rem;padding:.55rem .8rem;min-height:44px}
 @media (max-width:560px){.prod .notify{grid-column:2;grid-row:1 / span 2}}
+.subhead{font-family:var(--display);font-size:1.05rem;letter-spacing:.02em;color:var(--orange);padding:1.2rem 0 .1rem;border-bottom:1px solid var(--line)}
 .minnote{font-size:.8rem;color:var(--orange);font-weight:600}
 
 .basket{position:sticky;top:88px;background:var(--surface);padding:1.4rem;border-top:6px solid var(--orange)}
@@ -171,6 +183,13 @@ textarea{min-height:70px;resize:vertical}
 .zones div:last-child{border-right:0}
 .zones b{display:block;font-family:var(--display);font-weight:400;font-size:1.25rem}
 @media (max-width:560px){.zones{grid-template-columns:1fr 1fr}.zones div:nth-child(2){border-right:0}.zones div:nth-child(-n+2){border-bottom:1.5px solid var(--line)}}
+
+/* farm gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gallery figure{margin:0}
+.gallery img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--surface)}
+.gallery figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem}
+@media (max-width:760px){.gallery{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.5rem}.gallery figure{scroll-snap-align:start}}
 
 /* how */
 .how ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
@@ -246,27 +265,89 @@ footer a:hover{color:var(--orange)}
       </div>
       <p class="note">Same-day delivery in Ahero and Nyando for orders placed before 11am.</p>
     </div>
-    <svg class="tray" viewBox="0 0 400 330" role="img" aria-label="A tray of fresh brown eggs">
-      <rect x="20" y="70" width="360" height="240" rx="6" fill="#d9c9a8"/>
-      <g fill="#c7b38c">
-        <circle cx="80" cy="130" r="34"/><circle cx="160" cy="130" r="34"/><circle cx="240" cy="130" r="34"/><circle cx="320" cy="130" r="34"/>
-        <circle cx="80" cy="200" r="34"/><circle cx="160" cy="200" r="34"/><circle cx="240" cy="200" r="34"/><circle cx="320" cy="200" r="34"/>
-        <circle cx="80" cy="270" r="34"/><circle cx="160" cy="270" r="34"/><circle cx="240" cy="270" r="34"/><circle cx="320" cy="270" r="34"/>
-      </g>
-      <g id="egg">
-        <ellipse cx="80" cy="118" rx="25" ry="32" fill="#b5703d"/>
-        <ellipse cx="72" cy="106" rx="7" ry="11" fill="#d39461" opacity=".7"/>
-      </g>
-      <use href="#egg" x="80"/><use href="#egg" x="160"/><use href="#egg" x="240"/>
-      <use href="#egg" y="70"/><use href="#egg" x="80" y="70"/><use href="#egg" x="240" y="70"/>
-      <use href="#egg" y="140"/><use href="#egg" x="80" y="140"/><use href="#egg" x="160" y="140"/><use href="#egg" x="240" y="140"/>
-      <g transform="translate(240 188)">
-        <ellipse cx="0" cy="0" rx="25" ry="20" fill="#fff"/>
-        <circle cx="0" cy="2" r="10" fill="#fcc30b"/>
-      </g>
-      <rect x="250" y="18" width="130" height="44" fill="#3d3d3d"/>
-      <text x="315" y="47" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="20" fill="#fcc30b">TRAY OF 30</text>
-    </svg>
+    <div class="posters" id="posters" aria-roledescription="carousel" aria-label="This week at Shadoro">
+      <div class="deck">
+        <!-- 1 Kienyeji hens -->
+        <svg class="poster on" viewBox="0 0 400 500" role="img" aria-label="Kienyeji hens, photo from our farm">
+          <defs><linearGradient id="shade1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".82"/><stop offset=".6" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+          <image href="poster-hens.jpg" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="400" height="300" fill="url(#shade1)"/>
+          <text x="28" y="78" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fff">KIENYEJI</text>
+          <text x="28" y="134" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fcc30b">HENS</text>
+          <rect x="28" y="398" width="240" height="72" fill="#2b2b2b"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#fcc30b">Live · dressed from</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#fff" data-price="hen-l">KES</text>
+        </svg>
+        <!-- 2 Kienyeji cocks -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Kienyeji cocks, photo from our farm">
+          <defs><linearGradient id="shade2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".82"/><stop offset=".6" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+          <image href="poster-cock.jpg" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="400" height="300" fill="url(#shade2)"/>
+          <text x="28" y="78" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fff">KIENYEJI</text>
+          <text x="28" y="134" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fcc30b">COCKS</text>
+          <rect x="28" y="398" width="240" height="72" fill="#fcc30b"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#2b2b2b">Live · dressed from</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#2b2b2b" data-price="cock-l">KES</text>
+        </svg>
+        <!-- 3 Eggs -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Farm eggs, tray of 30">
+          <rect width="400" height="500" fill="#fcc30b"/>
+          <path d="M0 500 L400 330 L400 500Z" fill="#f2811d"/>
+          <text x="28" y="78" class="ph" font-size="58" fill="#2b2b2b">FARM EGGS</text>
+          <text x="30" y="112" class="ps" font-size="19" fill="#2b2b2b">Collected daily in Ahero</text>
+          <g transform="translate(70 170) scale(.66)">
+            <rect x="20" y="70" width="360" height="240" rx="6" fill="#e8d9b8"/>
+            <g fill="#d3c09a"><circle cx="80" cy="130" r="34"/><circle cx="160" cy="130" r="34"/><circle cx="240" cy="130" r="34"/><circle cx="320" cy="130" r="34"/><circle cx="80" cy="200" r="34"/><circle cx="160" cy="200" r="34"/><circle cx="240" cy="200" r="34"/><circle cx="320" cy="200" r="34"/><circle cx="80" cy="270" r="34"/><circle cx="160" cy="270" r="34"/><circle cx="240" cy="270" r="34"/><circle cx="320" cy="270" r="34"/></g>
+            <g id="pegg"><ellipse cx="80" cy="118" rx="25" ry="32" fill="#b5703d"/><ellipse cx="72" cy="106" rx="7" ry="11" fill="#d39461" opacity=".7"/></g>
+            <use href="#pegg" x="80"/><use href="#pegg" x="160"/><use href="#pegg" x="240"/><use href="#pegg" y="70"/><use href="#pegg" x="80" y="70"/><use href="#pegg" x="160" y="70"/><use href="#pegg" x="240" y="70"/><use href="#pegg" y="140"/><use href="#pegg" x="80" y="140"/><use href="#pegg" x="160" y="140"/><use href="#pegg" x="240" y="140"/>
+          </g>
+          <rect x="28" y="398" width="200" height="72" fill="#2b2b2b"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#fcc30b">Tray of 30</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#fff" data-price="egg-l">KES 420</text>
+        </svg>
+        <!-- 4 Day-old chicks -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Day-old chicks, photo from our farm">
+          <defs><linearGradient id="shade4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".82"/><stop offset=".6" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+          <image href="poster-chicks.jpg" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="400" height="300" fill="url(#shade4)"/>
+          <text x="28" y="78" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fff">DAY-OLD</text>
+          <text x="28" y="134" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fcc30b">CHICKS</text>
+          <rect x="28" y="398" width="240" height="72" fill="#f2811d"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#1d1d1d">Minimum 50 · each</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#1d1d1d" data-price="chick">KES</text>
+        </svg>
+        <!-- 5 Delivery -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Free delivery within 10 km of Ahero">
+          <rect width="400" height="500" fill="#2f6b3a"/>
+          <g fill="none" stroke="#fff" stroke-opacity=".35" stroke-dasharray="6 7" stroke-width="2">
+            <circle cx="200" cy="330" r="60"/><circle cx="200" cy="330" r="115"/><circle cx="200" cy="330" r="170"/>
+          </g>
+          <text x="28" y="78" class="ph" font-size="54" fill="#fcc30b">DELIVERED</text>
+          <text x="28" y="134" class="ph" font-size="54" fill="#fff">TO YOU</text>
+          <g transform="translate(30 -45)">
+            <circle cx="130" cy="370" r="32" fill="none" stroke="#1d1d1d" stroke-width="12"/>
+            <circle cx="275" cy="370" r="32" fill="none" stroke="#1d1d1d" stroke-width="12"/>
+            <path d="M130 370 L175 316 L238 316 L275 370" stroke="#f2811d" stroke-width="12" fill="none" stroke-linejoin="round"/>
+            <path d="M170 316 L186 292 L226 292 L240 316Z" fill="#f2811d"/>
+            <path d="M246 316 L262 262 L280 262" stroke="#1d1d1d" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="92" y="262" width="80" height="52" fill="#fcc30b"/>
+            <text x="132" y="294" text-anchor="middle" class="ph" font-size="15" fill="#2b2b2b">SHADORO</text>
+            <path d="M206 290 L222 238 L248 262" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="222" cy="220" r="17" fill="#fcc30b"/>
+          </g>
+          <rect x="28" y="398" width="270" height="72" fill="#fcc30b"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#2b2b2b">Within 10 km of Ahero</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#2b2b2b">FREE DELIVERY</text>
+        </svg>
+      </div>
+      <div class="dots" role="group" aria-label="Choose poster">
+        <button type="button" aria-label="Kienyeji hens" aria-current="true"></button>
+        <button type="button" aria-label="Kienyeji cocks"></button>
+        <button type="button" aria-label="Eggs"></button>
+        <button type="button" aria-label="Day-old chicks"></button>
+        <button type="button" aria-label="Delivery"></button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -359,6 +440,22 @@ footer a:hover{color:var(--orange)}
   </div>
 </section>
 
+<section class="farm" aria-labelledby="farm-h">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2 id="farm-h">From our farm in Ahero</h2>
+        <p class="lede">These are our own birds, raised on deep litter with clean water and feed every day. What you see here is what we deliver.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure><img src="farm-flock.jpg" alt="Our mixed flock of kienyeji hens and cocks in the poultry house" loading="lazy" width="600" height="750"><figcaption>The flock, hens in front and cocks at the back</figcaption></figure>
+      <figure><img src="farm-perch.jpg" alt="Hens on perches and around the feeder" loading="lazy" width="600" height="750"><figcaption>Room to perch, scratch and feed</figcaption></figure>
+      <figure><img src="farm-hens.jpg" alt="Close view of barred and brown kienyeji hens" loading="lazy" width="600" height="750"><figcaption>Healthy, well-grown birds</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="how" aria-labelledby="how-h">
   <div class="wrap">
     <div class="head"><h2 id="how-h">How ordering works</h2></div>
@@ -394,7 +491,7 @@ footer a:hover{color:var(--orange)}
   <div class="wrap faqwrap">
     <div class="head"><h2 id="faq-h">Questions people ask</h2></div>
     <details><summary>How fresh are the eggs?</summary><p>Eggs are collected daily and delivered within a few days of laying. Every tray is checked for cracks before it leaves the farm.</p></details>
-    <details><summary>Can I get the chicken slaughtered and cleaned?</summary><p>Yes. Choose "dressed" on the list and we deliver it slaughtered, cleaned and packed. Live birds are also available.</p></details>
+    <details><summary>Can I get the chicken slaughtered and cleaned?</summary><p>Yes. Choose "dressed" for a hen, cock or broiler and we deliver it slaughtered, cleaned and packed. Live birds are also available.</p></details>
     <details><summary>Is there a minimum order?</summary><p>No minimum for eggs and chicken. Day-old chicks are sold from 50 upwards so they travel warm and safe.</p></details>
     <details><summary>What if something is wrong with my order?</summary><p>Check your order when the rider arrives. Cracked eggs or a problem bird are replaced on the spot or on the next delivery.</p></details>
     <details><summary>Can I pay before delivery?</summary><p>Yes. Pay to our Buy Goods Till 3267707 and put the M-Pesa confirmation code in your order. The name shown on the M-Pesa message confirms you are paying Shadoro.</p></details>
@@ -439,12 +536,12 @@ footer a:hover{color:var(--orange)}
 const WHATSAPP = "254726510856";           // number that receives orders (no + or spaces)
 const TILL = "3267707";                    // Safaricom Buy Goods till
 // Leave empty until your Cloudflare Worker is live, then paste its address, e.g. "https://shadoro-pay.yourname.workers.dev"
-const PAY_ENDPOINT = "";
+const PAY_ENDPOINT = "https://shadoro-pay.shadoroltd.workers.dev";
 const FARM = { name:"Ahero (farm)", lat:-0.1745, lon:34.9186 };
 
 // OPTIONAL: a published Google Sheet (CSV link) to update prices and stock from your phone.
 // Columns: id, price, stock, left, note. Leave "" to use the list below.
-const STOCK_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSgrfFoM2GpenLkFrzfgnythRd-Kb-d8Y6JqTgZpYNHIBOl7bFlelgfwJz5XHVVuj78QlnyBhZ8rdCR/pub?gid=1349540994&single=true&output=csv";
+const STOCK_SHEET_URL = "";
 
 // Prices are placeholders — replace with your real prices.
 // stock: "in" = available, "low" = few left (also set left: number), "out" = sold out.
@@ -452,10 +549,12 @@ const STOCK_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSgrfFo
 const PRODUCTS = [
   { id:"egg-l",  cat:"Eggs",    name:"Eggs, tray of 30",          desc:"Fresh layer eggs, graded medium to large.",          price:420,  unit:"per tray", stock:"in" },
   { id:"egg-k",  cat:"Eggs",    name:"Kienyeji eggs, tray of 30", desc:"From free-range improved kienyeji hens.",            price:600,  unit:"per tray", stock:"in" },
-  { id:"kie-l",  cat:"Chicken", name:"Kienyeji chicken, live",    desc:"Mature improved kienyeji, about 2 kg.",              price:900,  unit:"per bird", stock:"in" },
-  { id:"kie-d",  cat:"Chicken", name:"Kienyeji chicken, dressed", desc:"Slaughtered, cleaned and packed.",                   price:1000, unit:"per bird", stock:"in" },
-  { id:"bro-l",  cat:"Chicken", name:"Broiler, live",             desc:"Six-week broiler, about 2 kg.",                      price:600,  unit:"per bird", stock:"in" },
-  { id:"bro-d",  cat:"Chicken", name:"Broiler, dressed",          desc:"Slaughtered, cleaned and packed.",                   price:700,  unit:"per bird", stock:"in" },
+  { id:"hen-l",  cat:"Chicken", sub:"Kienyeji hens",  name:"Kienyeji hen, live",     desc:"Mature improved kienyeji hen.",                 price:1000, unit:"per bird", stock:"in" },
+  { id:"hen-d",  cat:"Chicken", sub:"Kienyeji hens",  name:"Kienyeji hen, dressed",  desc:"Slaughtered, cleaned and packed.",              price:1200, unit:"per bird", stock:"in" },
+  { id:"cock-l", cat:"Chicken", sub:"Kienyeji cocks", name:"Kienyeji cock, live",    desc:"Mature improved kienyeji cockerel, bigger bird.", price:1400, unit:"per bird", stock:"in" },
+  { id:"cock-d", cat:"Chicken", sub:"Kienyeji cocks", name:"Kienyeji cock, dressed", desc:"Slaughtered, cleaned and packed.",              price:1600, unit:"per bird", stock:"in" },
+  { id:"bro-l",  cat:"Chicken", sub:"Broilers", name:"Broiler, live",             desc:"Six-week broiler, about 2 kg.",                      price:600,  unit:"per bird", stock:"in" },
+  { id:"bro-d",  cat:"Chicken", sub:"Broilers", name:"Broiler, dressed",          desc:"Slaughtered, cleaned and packed.",                   price:700,  unit:"per bird", stock:"in" },
   { id:"chick",  cat:"For farmers", name:"Day-old chicks",        desc:"Improved kienyeji, vaccinated against Marek's.",     price:110,  unit:"per chick", min:50, stepBy:10, stock:"in" },
   { id:"pol",    cat:"For farmers", name:"Point-of-lay hens",     desc:"18 to 20 weeks, ready to start laying.",             price:850,  unit:"per hen", stock:"in" },
   { id:"manure", cat:"For farmers", name:"Chicken manure",        desc:"Dry, bagged. Good for kitchen gardens and shambas.", price:300,  unit:"per bag", stock:"in" }
@@ -548,6 +647,30 @@ async function refreshStock(){
   return changed;
 }
 
+/* ---------- hero posters ---------- */
+const posterEls=[...document.querySelectorAll(".poster")], dotEls=[...document.querySelectorAll(".dots button")];
+let posterIdx=0, posterTimer=null;
+function showPoster(i){
+  posterIdx=(i+posterEls.length)%posterEls.length;
+  posterEls.forEach((p,k)=>p.classList.toggle("on",k===posterIdx));
+  dotEls.forEach((d,k)=>d.setAttribute("aria-current",k===posterIdx?"true":"false"));
+}
+function startPosters(){
+  stopPosters();
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  posterTimer=setInterval(()=>showPoster(posterIdx+1),5000);
+}
+function stopPosters(){ if(posterTimer){clearInterval(posterTimer);posterTimer=null;} }
+dotEls.forEach((d,k)=>d.addEventListener("click",()=>{showPoster(k);startPosters();}));
+const posterBox=$("posters");
+posterBox.addEventListener("mouseenter",stopPosters); posterBox.addEventListener("mouseleave",startPosters);
+posterBox.addEventListener("focusin",stopPosters); posterBox.addEventListener("focusout",startPosters);
+function updatePosterPrices(){
+  document.querySelectorAll("[data-price]").forEach(t=>{const p=PRODUCTS.find(x=>x.id===t.dataset.price);if(p) t.textContent=fmt(p.price);});
+  const free=ZONES.find(z=>z.fee===0); const lastPoster=posterEls[posterEls.length-1];
+  if(!free&&lastPoster) lastPoster.querySelector("text:last-of-type").textContent="FAST DELIVERY";
+}
+
 /* ---------- products ---------- */
 function renderCats(){
   const cats=["All",...new Set(PRODUCTS.map(p=>p.cat))];
@@ -558,7 +681,15 @@ $("cats").addEventListener("click",e=>{
   filter=b.dataset.c; renderCats(); renderProducts();
 });
 function renderProducts(){
+  updatePosterPrices();
+  let lastSub=null;
   $("plist").innerHTML=PRODUCTS.filter(p=>filter==="All"||p.cat===filter).map(p=>{
+    const head = p.sub && p.sub!==lastSub ? `<li class="subhead">${p.sub}</li>` : "";
+    lastSub = p.sub||null;
+    return head + productRow(p);
+  }).join("");
+}
+function productRow(p){
     const q=cart[p.id]||0;
     const badge = p.stock==="out" ? `<span class="badge out">Sold out${p.note?". "+esc(p.note):""}</span>`
                 : p.stock==="low" && p.left ? `<span class="badge low">Only ${p.left} left</span>` : "";
@@ -574,7 +705,6 @@ function renderProducts(){
         <output aria-live="polite" aria-label="Quantity of ${p.name}">${q}</output>
         <button type="button" data-d="1" aria-label="Add one ${p.name}">+</button>
       </div></li>`;
-  }).join("");
 }
 $("plist").addEventListener("click",e=>{
   const b=e.target.closest("[data-d]"); if(!b) return;
@@ -777,7 +907,7 @@ $("rings").addEventListener("keydown",e=>{const g=e.target.closest(".town");if(g
 $("float-wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, I would like to ask about eggs and chicken.")}`;
 $("bulk-wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, we are an institution and would like a quote for weekly supply of eggs/chicken.\nInstitution:\nLocation:\nWeekly quantity:")}`;
 
-renderCats(); renderProducts(); renderBasket(); drawRings(); refreshStock();
+renderCats(); renderProducts(); renderBasket(); drawRings(); startPosters(); refreshStock();
 </script>
 </body>
 </html>
