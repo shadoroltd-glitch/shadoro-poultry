@@ -184,6 +184,7 @@ textarea{min-height:72px;resize:vertical}
 .till{font-size:1.15rem;letter-spacing:.04em}
 .copy{font:700 .8rem var(--body);padding:.25rem .7rem;margin-left:.3rem;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
 .paid{color:var(--leaf2);font-weight:700}
+.limit{margin:.9rem 0 0;padding:.7rem .85rem;border-radius:var(--r-sm);background:color-mix(in srgb,var(--ember) 14%,var(--bg));font-size:.9rem;font-weight:600}
 .done{margin-top:1.1rem;padding:1.2rem;background:var(--bg);border:2px solid var(--leaf2);border-radius:var(--r-sm)}
 .done h3{font-size:1.3rem;margin-bottom:.5rem}
 .done p{font-size:.95rem}
@@ -432,6 +433,7 @@ footer a:hover{color:var(--ember)}
           <option>Tomorrow afternoon</option>
           <option>This weekend</option>
         </select>
+        <p class="limit" id="limit-note" hidden>This order is above M-Pesa's limit of KES 250,000 per payment. Choose pay on delivery, or message us to pay in parts.</p>
         <fieldset class="pay">
           <legend>How will you pay?</legend>
           <label class="opt" id="opt-stk" hidden><input type="radio" name="pay" value="stk"> Pay now with an M-Pesa prompt on my phone</label>
@@ -592,6 +594,7 @@ footer a:hover{color:var(--ember)}
 /* ============ EDIT YOUR BUSINESS DETAILS HERE ============ */
 const WHATSAPP = "254726510856";           // number that receives orders (no + or spaces)
 const TILL = "3267707";                    // Safaricom Buy Goods till
+const MPESA_MAX = 250000;                  // Safaricom limit per M-Pesa payment (KES)
 // Leave empty until your Cloudflare Worker is live, then paste its address, e.g. "https://shadoro-pay.yourname.workers.dev"
 // If you ever change this address, also change it in the Content-Security-Policy line at the top of this file.
 const PAY_ENDPOINT = "https://shadoro-pay.shadoroltd.workers.dev";
@@ -810,6 +813,7 @@ function renderBasket(){
   $("mb-total").textContent=fmt(t.all);
   $("mbar").classList.toggle("show",n>0);
   $("till-amt").textContent=fmt(t.all);
+  $("limit-note").hidden = t.all<=MPESA_MAX;
   $("stk").textContent=stkPaid?"Paid":t.all>0?"Send M-Pesa prompt of "+fmt(t.all):"Send M-Pesa prompt";
 }
 function areaOptions(sel){
@@ -847,6 +851,7 @@ $("send").addEventListener("click",()=>{
   if(!$("o-name").value.trim()){err.textContent="Add your name so the rider knows who to ask for.";$("o-name").focus();return;}
   const pay=payMethod(), t=totals();
   if(pay!=="cod" && t.z.fee==null){err.textContent="We need to quote delivery to your area first. Choose pay on delivery, or ask us on WhatsApp.";return;}
+  if(pay!=="cod" && !stkPaid && t.all>MPESA_MAX){err.textContent=`M-Pesa allows up to ${fmt(MPESA_MAX)} per payment. Choose pay on delivery, or message us to pay in parts.`;return;}
   if(pay==="stk" && !stkPaid){err.textContent="Send the M-Pesa prompt and complete the payment first.";return;}
   let code="";
   if(pay==="till"){
@@ -911,6 +916,7 @@ $("stk").addEventListener("click",async()=>{
   if(!Object.keys(cart).length){err.textContent="Add at least one item before paying.";return;}
   if(!area){err.textContent="Choose your delivery area so the total includes delivery.";$("o-area").focus();return;}
   if(t.z.fee==null){err.textContent="We need to quote delivery to your area first. Ask us on WhatsApp.";return;}
+  if(t.all>MPESA_MAX){err.textContent=`M-Pesa allows up to ${fmt(MPESA_MAX)} per payment. Choose pay on delivery, or message us to pay in parts.`;return;}
   if(await refreshStock()){ msg.textContent="Your order changed because of stock. Check the total, then send the prompt again."; return; }
   if(!Object.keys(cart).length){err.textContent="Sorry, the items in your order have just sold out.";return;}
   const phone=normPhone($("o-phone").value);
