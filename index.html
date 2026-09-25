@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shadoro Poultry — Fresh eggs & chicken delivered around Ahero and Kisumu</title>
 <meta name="description" content="Order fresh eggs, kienyeji and broiler chicken, chicks and point-of-lay hens from Shadoro Limited, Ahero. Delivery across Nyando, Kisumu and Muhoroni. Pay by M-Pesa Till 3267707 or on delivery.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://shadoro-pay.shadoroltd.workers.dev https://docs.google.com https://*.googleusercontent.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#17402a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='35' rx='22' ry='27' fill='%23f7b32b'/%3E%3Ctext x='32' y='46' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%2317402a'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://shadoroltd-glitch.github.io/shadoro-poultry/">
@@ -17,7 +19,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://shadoroltd-glitch.github.io/shadoro-poultry/">
 <meta name="twitter:card" content="summary_large_image">
-<!-- When you self-host: paste your Meta Pixel base code here so Facebook can measure who clicked "Send order on WhatsApp". -->
+<!-- Meta Pixel: if you add it later, also add https://connect.facebook.net to script-src and https://www.facebook.com to img-src and connect-src in the Content-Security-Policy line above. -->
 <link rel="preload" as="image" href="poster-hens.jpg" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="bricolage.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="figtree.woff2" crossorigin>
@@ -182,6 +184,13 @@ textarea{min-height:72px;resize:vertical}
 .till{font-size:1.15rem;letter-spacing:.04em}
 .copy{font:700 .8rem var(--body);padding:.25rem .7rem;margin-left:.3rem;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
 .paid{color:var(--leaf2);font-weight:700}
+.done{margin-top:1.1rem;padding:1.2rem;background:var(--bg);border:2px solid var(--leaf2);border-radius:var(--r-sm)}
+.done h3{font-size:1.3rem;margin-bottom:.5rem}
+.done p{font-size:.95rem}
+.done ol{margin:.2rem 0 .6rem;padding-left:1.2rem;font-size:.93rem;color:var(--muted)}
+.done li{margin:.35rem 0}
+#done-ref,#done-ref2{white-space:nowrap}
+.done .btn{width:100%;margin-top:.6rem}
 
 /* delivery */
 .deliver{background:var(--surface)}
@@ -450,6 +459,17 @@ footer a:hover{color:var(--ember)}
         <button class="btn btn-wa" id="send" type="button">Send order on WhatsApp</button>
         <p class="err" id="err" role="alert"></p>
         <p class="fine">We confirm availability and delivery time on WhatsApp before we set off. Payments go to Shadoro Limited.</p>
+        <div class="done" id="done" hidden tabindex="-1" aria-live="polite">
+          <h3>Order <span id="done-ref"></span> is ready</h3>
+          <p>WhatsApp should now be open with your order written out. <b>Tap send in WhatsApp</b> to place it.</p>
+          <ol>
+            <li>We reply on WhatsApp to confirm stock and your delivery time. We reply within 30 minutes, 7am to 6pm.</li>
+            <li id="done-pay"></li>
+            <li>Keep your order number <b id="done-ref2"></b> in case you need to ask about it.</li>
+          </ol>
+          <a class="btn btn-line" id="done-again" target="_blank" rel="noopener">WhatsApp didn't open? Tap here</a>
+          <button class="btn btn-yolk" id="done-new" type="button">Start a new order</button>
+        </div>
       </aside>
     </div>
   </div>
@@ -573,6 +593,7 @@ footer a:hover{color:var(--ember)}
 const WHATSAPP = "254726510856";           // number that receives orders (no + or spaces)
 const TILL = "3267707";                    // Safaricom Buy Goods till
 // Leave empty until your Cloudflare Worker is live, then paste its address, e.g. "https://shadoro-pay.yourname.workers.dev"
+// If you ever change this address, also change it in the Content-Security-Policy line at the top of this file.
 const PAY_ENDPOINT = "https://shadoro-pay.shadoroltd.workers.dev";
 const FARM = { name:"Ahero (farm)", lat:-0.1745, lon:34.9186 };
 
@@ -623,6 +644,8 @@ const AREAS = [
 const fmt = n => "KES " + n.toLocaleString("en-KE");
 const $ = id => document.getElementById(id);
 const cart = {};
+const ORDER_REF = (()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");
+  return "SH"+p(d.getDate())+p(d.getMonth()+1)+"-"+Math.floor(1000+Math.random()*9000);})();
 let stkPaid = null;  // {ref, amount} after a successful prompt payment
 let meArea = null;   // last "use my location" result
 let area = null;     // {name, km}
@@ -836,9 +859,19 @@ $("send").addEventListener("click",()=>{
                 : "On delivery (M-Pesa or cash)";
   const lines=ids.map(id=>{const p=PRODUCTS.find(x=>x.id===id);return `- ${cart[id]} x ${p.name} = ${fmt(p.price*cart[id])}`}).join("\n");
   const dist=area.km===Infinity?"":` (about ${Math.round(area.km)} km)`;
-  const msg=`Hello Shadoro, I would like to order:\n${lines}\n\nItems: ${fmt(t.items)}\nDelivery: ${t.z.fee==null?"please quote":t.z.fee===0?"Free":fmt(t.z.fee)}\nTotal: ${fmt(t.all)}\n\nName: ${$("o-name").value.trim()}\nArea: ${area.name}${dist}\nLandmark: ${$("o-mark").value.trim()||"-"}\nWhen: ${$("o-when").value}\nPayment: ${payLine}`;
+  const msg=`Hello Shadoro, I would like to order (Order ${ORDER_REF}):\n${lines}\n\nItems: ${fmt(t.items)}\nDelivery: ${t.z.fee==null?"please quote":t.z.fee===0?"Free":fmt(t.z.fee)}\nTotal: ${fmt(t.all)}\n\nName: ${$("o-name").value.trim()}\nArea: ${area.name}${dist}\nLandmark: ${$("o-mark").value.trim()||"-"}\nWhen: ${$("o-when").value}\nPayment: ${payLine}`;
   openWhatsApp(msg);
+  showDone(pay,t,msg);
 });
+function showDone(pay,t,msg){
+  $("done-ref").textContent=ORDER_REF; $("done-ref2").textContent=ORDER_REF;
+  $("done-pay").textContent = pay==="cod" ? `Pay ${fmt(t.all)} by M-Pesa or cash when the order arrives.`
+    : `We check your payment of ${fmt(stkPaid?stkPaid.amount:t.all)} against our M-Pesa statement before we dispatch.`;
+  $("done-again").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  $("done").hidden=false; $("done").focus({preventScroll:true});
+  $("done").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+$("done-new").addEventListener("click",()=>location.reload());
 function openWhatsApp(text){
   const url=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
   let w=null;
@@ -887,7 +920,7 @@ $("stk").addEventListener("click",async()=>{
     let res,data;
     try{
       res=await fetch(PAY_ENDPOINT.replace(/\/$/,"")+"/stk",{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({phone,amount:t.all,ref:"SHADORO"})});
+        body:JSON.stringify({phone,amount:t.all,ref:ORDER_REF})});
       data=await res.json();
     }catch(netErr){ throw new Error("We could not reach M-Pesa. Check your internet connection."); }
     if(!res.ok||!data.checkoutId) throw new Error(data.error||"The prompt could not be sent.");
