@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shadoro Poultry — Fresh eggs & chicken delivered around Ahero and Kisumu</title>
+<meta name="description" content="Order fresh eggs, kienyeji and broiler chicken, chicks and point-of-lay hens from Shadoro Limited, Ahero. Delivery across Nyando, Kisumu and Muhoroni. Pay by M-Pesa Till 3267707 or on delivery.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://shadoro-pay.shadoroltd.workers.dev https://docs.google.com https://*.googleusercontent.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#17402a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='35' rx='22' ry='27' fill='%23f7b32b'/%3E%3Ctext x='32' y='46' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%2317402a'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://shadoroltd-glitch.github.io/shadoro-poultry/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shadoro Poultry">
+<meta property="og:title" content="Shadoro Poultry: fresh eggs and kienyeji chicken from Ahero">
+<meta property="og:description" content="Order eggs, kienyeji hens and cocks, broilers and chicks. Delivery around Ahero and Kisumu. Pay by M-Pesa.">
+<meta property="og:image" content="https://shadoroltd-glitch.github.io/shadoro-poultry/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://shadoroltd-glitch.github.io/shadoro-poultry/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Meta Pixel: if you add it later, also add https://connect.facebook.net to script-src and https://www.facebook.com to img-src and connect-src in the Content-Security-Policy line above. -->
+<link rel="preload" as="image" href="poster-hens.jpg" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="bricolage.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="figtree.woff2" crossorigin>
+<style>
+@font-face{font-family:"Bricolage";src:url(bricolage.woff2) format("woff2");font-weight:500 800;font-display:swap}
+@font-face{font-family:"Figtree";src:url(figtree.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#ffffff; --surface:#f1f5ef; --ink:#15241a; --muted:#546257; --line:#d9e2d6;
+  --leaf:#17402a; --leaf2:#2c6a44; --yolk:#f7b32b; --yolk2:#ffc94d; --ember:#d9562a; --onleaf:#ffffff; --onleaf2:#d6e4d9;
+  --wa:#1b8a4c; --danger:#b3261e;
+  --display:"Bricolage","Arial Narrow",Arial,sans-serif;
+  --body:"Figtree","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r-sm:10px; --r-lg:18px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#111a14; --surface:#18241c; --ink:#eef3ec; --muted:#a9b8ad; --line:#2c3a30;
+    --leaf:#0d2617; --leaf2:#7cc493; --onleaf2:#c3d4c7; --ember:#f08355; --danger:#ff8a80;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111a14; --surface:#18241c; --ink:#eef3ec; --muted:#a9b8ad; --line:#2c3a30;
+  --leaf:#0d2617; --leaf2:#7cc493; --onleaf2:#c3d4c7; --ember:#f08355; --danger:#ff8a80;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.6;overflow-x:clip}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ember);outline-offset:2px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:750;line-height:1.05;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+h3{font-size:1.3rem;font-weight:700}
+p{margin:0 0 1rem;max-width:62ch}
+.lede{color:var(--muted);font-size:1.05rem}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+@supports not (background:color-mix(in srgb,red,blue)){.top{background:var(--bg)}}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;min-width:0}
+.mark{flex:none;width:38px;height:46px;border-radius:50% 50% 46% 46% / 58% 58% 42% 42%;background:var(--yolk);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--leaf);padding-top:4px}
+.brand b{display:block;font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.01em;line-height:1.1;white-space:nowrap}
+.brand small{display:block;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.nav{display:flex;gap:1.5rem;align-items:center}
+.nav a{text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap}
+.nav a:not(.btn):hover{color:var(--ember)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:700 1rem/1.2 var(--body);padding:.8rem 1.35rem;border:2px solid transparent;border-radius:999px;cursor:pointer;text-decoration:none;min-height:48px;text-align:center;transition:background-color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-yolk{background:var(--yolk);color:#1a1a12}
+.btn-yolk:hover{background:var(--yolk2)}
+.btn-line{border-color:currentColor;background:transparent;color:inherit}
+.btn-line:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#14713d}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+@media (max-width:760px){.nav a:not(.btn){display:none}.nav .btn{padding:.7rem 1.1rem}}
+@media (max-width:380px){.brand small{display:none}.brand b{font-size:1.15rem}.nav .btn{padding:.6rem .9rem;font-size:.92rem}.mark{width:32px;height:40px;font-size:1.15rem}}
+
+
+/* announcement bar */
+.announce{background:var(--leaf2);color:#fff;font-size:.85rem;font-weight:600;display:flex;justify-content:center;gap:2rem;padding:.4rem 1rem;white-space:nowrap;overflow:hidden}
+.announce span:not(:first-child){opacity:.92}
+@media (max-width:760px){.announce{justify-content:flex-start}.announce span:not(:first-child){display:none}}
+.nav .call{font-weight:700;color:var(--leaf2)}
+@media (max-width:1060px){.nav .call{display:none}}
+.count{display:inline-grid;place-items:center;min-width:1.5rem;height:1.5rem;padding:0 .35rem;border-radius:999px;background:var(--leaf);color:#fff;font-size:.8rem;font-weight:800}
+/* trust strip */
+.trust{padding-block:0;background:var(--bg);border-bottom:1px solid var(--line)}
+.trust ul{list-style:none;margin:0;padding:1.1rem 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.trust li{display:flex;gap:.7rem;align-items:center;font-size:.88rem;color:var(--muted)}
+.trust li b{display:block;color:var(--ink);font-size:.95rem}
+.trust svg{flex:none;width:38px;height:38px;padding:8px;border-radius:50%;background:var(--surface);fill:none;stroke:var(--leaf2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:860px){.trust ul{grid-template-columns:1fr 1fr}}
+/* category tiles */
+.tiles-sec{padding-block:2rem 0}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:0 0 .7rem;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg);color:var(--ink);text-decoration:none;cursor:pointer;overflow:hidden;font:inherit;text-align:left;transition:box-shadow .2s,transform .2s}
+.tile:hover{box-shadow:0 8px 20px rgba(20,40,25,.12);transform:translateY(-2px)}
+.tpic{display:block;width:100%;aspect-ratio:4/3;background:var(--surface);margin-bottom:.45rem}
+.tpic img,.tpic svg{display:block;width:100%;height:100%;object-fit:cover}
+.tname{font-weight:800;font-size:.95rem;padding:0 .7rem;line-height:1.2}
+.tfrom{font-size:.8rem;color:var(--muted);padding:0 .7rem}
+@media (max-width:900px){.tiles{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:38%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.4rem}.tile{scroll-snap-align:start}}
+@media (max-width:480px){.tiles{grid-auto-columns:42%}}
+/* deal banner */
+.deal{margin-top:1rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;padding:1rem 1.2rem;border-radius:var(--r-lg);background:var(--ember);color:#fff}
+.deal[hidden]{display:none}
+.deal > div:first-child{flex:1 1 260px}
+.deal b{display:block;font-family:var(--display);font-size:1.3rem}
+.deal .clock{font-family:var(--display);font-weight:800;font-size:1.6rem;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:.35rem}
+.deal .clock small{font-family:var(--body);font-size:.85rem;font-weight:600}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--leaf);color:var(--onleaf)}
+.hero .shapes{position:absolute;inset:0;pointer-events:none}
+.hero .shapes i{position:absolute;display:block}
+.s1{right:-8%;top:0;width:60%;height:100%;background:var(--yolk);clip-path:polygon(38% 0,100% 0,100% 100%,0 100%)}
+.s2{right:-8%;top:0;width:40%;height:62%;background:var(--ember);clip-path:polygon(100% 0,100% 100%,24% 100%)}
+.s3{left:-6%;bottom:-40px;width:34%;height:120px;background:var(--leaf2);opacity:.35;border-radius:50%}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center;padding-block:clamp(2.2rem,5vw,3.8rem)}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--onleaf2);font-size:1.08rem;margin-top:1.1rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+.hero .note{font-size:.92rem;color:var(--onleaf2);margin-top:1.1rem;display:flex;gap:.5rem;align-items:center}
+.hero .note::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yolk);flex:none}
+.posters{width:100%;max-width:360px;justify-self:center}
+.deck{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 22px 40px rgba(0,0,0,.32);background:#2a3a2e}
+.poster{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .6s ease}
+.poster.on{opacity:1}
+.poster .ph{font-family:var(--display);font-weight:800;letter-spacing:-.01em}
+.poster .ps{font-family:var(--body);font-weight:700}
+.dots{display:flex;justify-content:center;gap:.35rem;margin-top:1rem}
+.dots button{width:32px;height:32px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button::after{content:"";width:9px;height:9px;border-radius:99px;background:#fff;opacity:.5;transition:width .25s}
+.dots button[aria-current="true"]::after{opacity:1;background:#fff;width:24px}
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .s1{width:100%;height:34%;top:auto;bottom:0;clip-path:polygon(0 45%,100% 0,100% 100%,0 100%)}
+  .s2{width:55%;height:22%;top:auto;bottom:0;clip-path:polygon(100% 0,100% 100%,0 100%)}
+  .s3{display:none}
+  .posters{max-width:330px}
+}
+
+section{padding-block:clamp(3.5rem,8vw,5.5rem)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.head h2{margin-bottom:.6rem}
+.head p{margin:0}
+
+/* products + order */
+.shop{display:grid;grid-template-columns:1fr 370px;gap:2.5rem;align-items:start}
+@media (max-width:960px){.shop{grid-template-columns:1fr}}
+.cats{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.chip{font:600 .95rem var(--body);padding:.5rem 1rem;border:1.5px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;min-height:42px}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--leaf);color:#fff;border-color:var(--leaf)}
+.plist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.subhead{grid-column:1/-1;font-family:var(--display);font-weight:800;font-size:1.1rem;color:var(--ink);padding:1rem 0 0;margin-bottom:-.2rem}
+.subhead:first-child{padding-top:0}
+.card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.card:hover{box-shadow:0 8px 22px rgba(20,40,25,.10)}
+.card.on{border-color:var(--yolk);box-shadow:0 0 0 2px var(--yolk)}
+.pic{position:relative;aspect-ratio:1/1;background:var(--surface)}
+.pic img,.pic svg{display:block;width:100%;height:100%;object-fit:cover}
+.tags{position:absolute;left:.55rem;top:.55rem;display:flex;flex-wrap:wrap;gap:.3rem}
+.tagb{font-size:.75rem;font-weight:800;padding:.18rem .55rem;border-radius:999px;background:var(--leaf);color:#fff}
+.tagb.deal{background:var(--ember)}
+.tagb.low{background:var(--yolk);color:#1a1a12}
+.tagb.out{background:#5b5b5b}
+.cbody{display:flex;flex-direction:column;gap:.35rem;padding:.8rem .85rem .9rem;flex:1}
+.cbody h3{font-size:.95rem;line-height:1.3;font-family:var(--body);font-weight:700;letter-spacing:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cbody .desc{color:var(--muted);font-size:.8125rem;line-height:1.4;margin:0;flex:1}
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:.1rem .45rem;margin-top:.15rem}
+.price strong{font-size:1.125rem;font-weight:800}
+.price s{color:var(--muted);font-size:.85rem}
+.price span{font-size:.75rem;color:var(--muted);width:100%}
+.btn.add{width:100%;min-height:44px;margin-top:.35rem;background:var(--leaf);color:#fff}
+.btn.add:hover{background:var(--leaf2)}
+.step{display:flex;align-items:center;justify-content:space-between;border-radius:999px;background:var(--yolk);margin-top:.35rem}
+.step button{width:44px;height:44px;border:0;border-radius:999px;background:transparent;color:#1a1a12;font-size:1.35rem;line-height:1;cursor:pointer}
+.step button:hover{background:var(--yolk2)}
+.step output{flex:1;text-align:center;font-weight:800;color:#1a1a12}
+.card.soldout .pic{filter:grayscale(.85);opacity:.75}
+.card.soldout h3,.card.soldout .price{opacity:.6}
+.notify{width:100%;font-size:.88rem;padding:.5rem .8rem;min-height:44px;margin-top:.35rem}
+@media (max-width:560px){
+  .plist{grid-template-columns:1fr 1fr;gap:.7rem}
+  .cbody{padding:.65rem .65rem .75rem}
+  .cbody h3{font-size:.875rem}
+  .cbody .desc{font-size:.78rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .price strong{font-size:1.05rem}
+  .step button{width:40px;height:40px}
+}
+.badge{display:inline-block;margin-top:.45rem;font-size:.8rem;font-weight:700;padding:.15rem .6rem;border-radius:999px}
+.minnote{font-size:.8rem;color:var(--ember);font-weight:700}
+
+.basket{position:sticky;top:92px;background:var(--surface);padding:1.5rem;border-radius:var(--r-lg);border:1px solid var(--line)}
+.basket h3{font-size:1.55rem;margin-bottom:.7rem}
+.lines{list-style:none;margin:0 0 1rem;padding:0;font-size:.95rem}
+.lines li{display:flex;justify-content:space-between;gap:1rem;padding:.4rem 0;border-bottom:1px dashed var(--line)}
+.empty{color:var(--muted);font-size:.95rem}
+.tot{display:flex;justify-content:space-between;padding:.3rem 0;font-size:.95rem}
+.tot.big{font-weight:800;font-size:1.2rem;border-top:2px solid var(--ink);margin-top:.4rem;padding-top:.6rem}
+label{display:block;font-weight:700;font-size:.9rem;margin:.95rem 0 .35rem}
+input,select,textarea{width:100%;font:1rem var(--body);padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--bg);color:var(--ink);min-height:48px}
+input:focus,select:focus,textarea:focus{border-color:var(--leaf2);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--leaf2) 25%,transparent)}
+textarea{min-height:72px;resize:vertical}
+.basket .btn{width:100%;margin-top:1.1rem}
+.fine{font-size:.84rem;color:var(--muted);margin-top:.7rem}
+.err{color:var(--danger);font-size:.9rem;font-weight:700;margin-top:.6rem;min-height:1.2em}
+
+.pay{border:0;padding:0;margin:1.1rem 0 0}
+.pay legend{font-weight:700;font-size:.9rem;padding:0;margin-bottom:.35rem}
+.opt{display:flex;gap:.65rem;align-items:flex-start;font-weight:600;font-size:.95rem;margin:.3rem 0;padding:.55rem .7rem;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--bg);cursor:pointer}
+.opt:has(input:checked){border-color:var(--leaf2);box-shadow:inset 0 0 0 1px var(--leaf2)}
+.opt input{width:auto;min-height:0;margin-top:.3rem;accent-color:var(--leaf2);flex:none}
+.paybox{margin-top:.6rem;padding:1rem;background:var(--bg);border:1.5px solid var(--line);border-radius:var(--r-sm)}
+.paybox label:first-child{margin-top:0}
+.paybox .btn{margin-top:.8rem}
+.tillsteps{margin:0;padding-left:1.2rem;font-size:.93rem}
+.tillsteps li{margin:.3rem 0}
+.till{font-size:1.15rem;letter-spacing:.04em}
+.copy{font:700 .8rem var(--body);padding:.25rem .7rem;margin-left:.3rem;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
+.paid{color:var(--leaf2);font-weight:700}
+.limit{margin:.9rem 0 0;padding:.7rem .85rem;border-radius:var(--r-sm);background:color-mix(in srgb,var(--ember) 14%,var(--bg));font-size:.9rem;font-weight:600}
+.done{margin-top:1.1rem;padding:1.2rem;background:var(--bg);border:2px solid var(--leaf2);border-radius:var(--r-sm)}
+.done h3{font-size:1.3rem;margin-bottom:.5rem}
+.done p{font-size:.95rem}
+.done ol{margin:.2rem 0 .6rem;padding-left:1.2rem;font-size:.93rem;color:var(--muted)}
+.done li{margin:.35rem 0}
+#done-ref,#done-ref2{white-space:nowrap}
+.done .btn{width:100%;margin-top:.6rem}
+
+/* delivery */
+.deliver{background:var(--surface)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media (max-width:860px){.dgrid{grid-template-columns:1fr}}
+.rings{width:100%;max-width:520px;justify-self:center;overflow:visible}
+.rings .ring{fill:none;stroke:var(--ink);stroke-opacity:.25;stroke-dasharray:4 5}
+.rings .zA{fill:var(--yolk);fill-opacity:.6}
+.rings .zB{fill:var(--yolk);fill-opacity:.28}
+.rings .zC{fill:var(--leaf2);fill-opacity:.12}
+.rings text{font:600 11px var(--body);fill:var(--ink)}
+.rings .rl{font-size:10px;fill:var(--muted)}
+.rings .town{cursor:pointer}
+.rings .town circle{fill:var(--ink)}
+.rings .town.sel circle{fill:var(--ember);r:7}
+.rings .home{fill:var(--leaf);stroke:var(--yolk);stroke-width:3}
+.result{margin-top:1.4rem;padding:1.2rem 1.3rem;background:var(--bg);border-radius:var(--r-sm);border-left:6px solid var(--leaf2);min-height:6.5rem}
+.result.far{border-left-color:var(--ember)}
+.result h3{font-size:1.35rem;margin-bottom:.3rem}
+.result p{margin:0;color:var(--muted)}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:end}
+.row > div{flex:1 1 220px}
+.zones{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:1.4rem;border:1.5px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--bg)}
+.zones div{padding:.8rem;border-right:1.5px solid var(--line);font-size:.9rem}
+.zones div:last-child{border-right:0}
+.zones b{display:block;font-family:var(--display);font-weight:800;font-size:1.2rem}
+@media (max-width:560px){.zones{grid-template-columns:1fr 1fr}.zones div:nth-child(2){border-right:0}.zones div:nth-child(-n+2){border-bottom:1.5px solid var(--line)}}
+
+/* farm gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gallery figure{margin:0}
+.gallery img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--surface);border-radius:var(--r-lg)}
+.gallery figcaption{font-size:.92rem;color:var(--muted);margin-top:.55rem}
+@media (max-width:760px){.gallery{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}.gallery figure{scroll-snap-align:start}}
+
+/* how */
+.how{background:var(--surface)}
+.how ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
+.how li{counter-increment:s;background:var(--bg);border-radius:var(--r-lg);padding:1.3rem 1.2rem 1.4rem;border:1px solid var(--line)}
+.how li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:1.1rem;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--yolk);color:#1a1a12;display:grid;place-items:center;margin-bottom:.8rem}
+.how li b{display:block;font-size:1.05rem;margin-bottom:.25rem}
+.how li span{color:var(--muted);font-size:.95rem}
+@media (max-width:820px){.how ol{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.how ol{grid-template-columns:1fr}}
+
+/* institutions */
+.inst{background:var(--leaf);color:var(--onleaf)}
+.inst .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem}
+.inst p{color:var(--onleaf2)}
+.inst ul{margin:0;padding:0;list-style:none}
+.inst li{padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.16);color:var(--onleaf2)}
+.inst li b{color:var(--yolk);font-weight:700}
+@media (max-width:820px){.inst .wrap{grid-template-columns:1fr}}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line);padding:1.05rem 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1;color:var(--ember)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:.7rem 0 0;color:var(--muted)}
+.faqwrap{max-width:780px}
+
+footer{background:var(--surface);padding-block:3rem 5.5rem;font-size:.95rem;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
+footer h3{font-size:1.15rem;margin-bottom:.5rem}
+footer p{margin:0 0 .4rem;color:var(--muted)}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ember)}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+.paybar{display:flex!important;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.paybar p{flex:1 1 100%;margin:.4rem 0 0;font-size:.85rem;color:var(--muted)}
+.pchip{font-size:.82rem;font-weight:700;padding:.3rem .75rem;border-radius:999px;border:1.5px solid var(--line);background:var(--bg)}
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.rev{margin:0;padding:1.2rem;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+.rev .stars{color:#e0a100;letter-spacing:.1em}
+.rev blockquote{margin:.5rem 0 .7rem;font-size:1rem}
+.rev figcaption{font-size:.88rem;color:var(--muted);font-weight:600}
+
+/* mobile order bar */
+.mbar{position:fixed;left:.75rem;right:.75rem;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));z-index:30;background:var(--leaf);color:#fff;padding:.6rem .7rem .6rem 1.1rem;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.25);display:none;align-items:center;justify-content:space-between;gap:1rem}
+.mbar.show{display:flex}
+.mbar.show.away{display:none}
+.mbar .btn{min-height:42px;padding:.55rem 1.1rem}
+@media (min-width:961px){.mbar.show{display:none}}
+.float-wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:25;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+@media (max-width:960px){.float-wa{bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
+.float-wa.away{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<div class="announce" id="announce"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Shadoro Poultry home">
+      <span class="mark" aria-hidden="true">S</span>
+      <span><b>Shadoro Poultry</b><small>Ahero, Kisumu County</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#shop">Products</a>
+      <a href="#deliver">Delivery areas</a>
+      <a href="#bulk">Bulk supply</a>
+      <a href="#faq">Questions</a>
+      <a class="call" href="tel:+254726510856">0726 510 856</a>
+      <a class="btn btn-yolk" id="hdr-basket" href="#shop">Order now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1" style="padding-block:0">
+  <div class="shapes" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i></div>
+  <div class="wrap">
+    <div>
+      <h1 id="h1">Fresh eggs and chicken from Ahero, brought to your door.</h1>
+      <p>Trays of eggs, kienyeji and broiler chicken, chicks and point-of-lay hens from our farm. Order online and pay by M-Pesa, or pay when it arrives.</p>
+      <div class="ctas">
+        <a class="btn btn-yolk" href="#shop">Start an order</a>
+        <a class="btn btn-line" href="#deliver">Do you deliver to me?</a>
+      </div>
+      <p class="note">Same-day delivery in Ahero and Nyando for orders placed before 11am.</p>
+    </div>
+    <div class="posters" id="posters" aria-roledescription="carousel" aria-label="This week at Shadoro">
+      <div class="deck">
+        <!-- 1 Kienyeji hens -->
+        <svg class="poster on" viewBox="0 0 400 500" role="img" aria-label="Kienyeji hens, photo from our farm">
+          <defs><linearGradient id="shade1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".82"/><stop offset=".6" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+          <image href="poster-hens.jpg" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="400" height="300" fill="url(#shade1)"/>
+          <text x="28" y="78" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fff">KIENYEJI</text>
+          <text x="28" y="134" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#f7b32b">HENS</text>
+          <rect x="24" y="384" width="336" height="86" fill="#15241a"/>
+          <line x1="184" y1="398" x2="184" y2="456" stroke="#f7b32b" stroke-opacity=".5" stroke-width="1.5"/>
+          <text x="40" y="412" class="ps" font-size="15" fill="#f7b32b">Live</text>
+          <text x="40" y="452" class="ph" font-size="28" fill="#fff" data-price="hen-l">KES</text>
+          <text x="200" y="412" class="ps" font-size="15" fill="#f7b32b">Dressed</text>
+          <text x="200" y="452" class="ph" font-size="28" fill="#fff" data-price="hen-d">KES</text>
+        </svg>
+        <!-- 2 Kienyeji cocks -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Kienyeji cocks, photo from our farm">
+          <defs><linearGradient id="shade2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".82"/><stop offset=".6" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+          <image data-href="poster-cock.jpg" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="400" height="300" fill="url(#shade2)"/>
+          <text x="28" y="78" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fff">KIENYEJI</text>
+          <text x="28" y="134" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#f7b32b">COCKS</text>
+          <rect x="24" y="384" width="336" height="86" fill="#f7b32b"/>
+          <line x1="184" y1="398" x2="184" y2="456" stroke="#15241a" stroke-opacity=".5" stroke-width="1.5"/>
+          <text x="40" y="412" class="ps" font-size="15" fill="#15241a">Live</text>
+          <text x="40" y="452" class="ph" font-size="28" fill="#15241a" data-price="cock-l">KES</text>
+          <text x="200" y="412" class="ps" font-size="15" fill="#15241a">Dressed</text>
+          <text x="200" y="452" class="ph" font-size="28" fill="#15241a" data-price="cock-d">KES</text>
+        </svg>
+        <!-- 3 Eggs -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Farm eggs, tray of 30">
+          <rect width="400" height="500" fill="#f7b32b"/>
+          <path d="M0 500 L400 330 L400 500Z" fill="#d9562a"/>
+          <text x="28" y="78" class="ph" font-size="58" fill="#15241a">FARM EGGS</text>
+          <text x="30" y="112" class="ps" font-size="19" fill="#15241a">Collected daily in Ahero</text>
+          <g transform="translate(70 170) scale(.66)">
+            <rect x="20" y="70" width="360" height="240" rx="6" fill="#e8d9b8"/>
+            <g fill="#d3c09a"><circle cx="80" cy="130" r="34"/><circle cx="160" cy="130" r="34"/><circle cx="240" cy="130" r="34"/><circle cx="320" cy="130" r="34"/><circle cx="80" cy="200" r="34"/><circle cx="160" cy="200" r="34"/><circle cx="240" cy="200" r="34"/><circle cx="320" cy="200" r="34"/><circle cx="80" cy="270" r="34"/><circle cx="160" cy="270" r="34"/><circle cx="240" cy="270" r="34"/><circle cx="320" cy="270" r="34"/></g>
+            <g id="pegg"><ellipse cx="80" cy="118" rx="25" ry="32" fill="#b5703d"/><ellipse cx="72" cy="106" rx="7" ry="11" fill="#d39461" opacity=".7"/></g>
+            <use href="#pegg" x="80"/><use href="#pegg" x="160"/><use href="#pegg" x="240"/><use href="#pegg" y="70"/><use href="#pegg" x="80" y="70"/><use href="#pegg" x="160" y="70"/><use href="#pegg" x="240" y="70"/><use href="#pegg" y="140"/><use href="#pegg" x="80" y="140"/><use href="#pegg" x="160" y="140"/><use href="#pegg" x="240" y="140"/>
+          </g>
+          <rect x="28" y="398" width="200" height="72" fill="#15241a"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#f7b32b">Tray of 30</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#fff" data-price="egg-l">KES 420</text>
+        </svg>
+        <!-- 4 Day-old chicks -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Day-old chicks, photo from our farm">
+          <defs><linearGradient id="shade4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".82"/><stop offset=".6" stop-color="#000" stop-opacity="0"/></linearGradient></defs>
+          <image data-href="poster-chicks.jpg" x="0" y="0" width="400" height="500" preserveAspectRatio="xMidYMid slice"/>
+          <rect width="400" height="300" fill="url(#shade4)"/>
+          <text x="28" y="78" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#fff">DAY-OLD</text>
+          <text x="28" y="134" class="ph" font-size="54" paint-order="stroke" stroke="#000" stroke-opacity=".45" stroke-width="5" stroke-linejoin="round" fill="#f7b32b">CHICKS</text>
+          <rect x="28" y="398" width="240" height="72" fill="#d9562a"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#1d1d1d">Minimum 50 · each</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#1d1d1d" data-price="chick">KES</text>
+        </svg>
+        <!-- 5 Delivery -->
+        <svg class="poster" viewBox="0 0 400 500" role="img" aria-label="Free delivery within 10 km of Ahero">
+          <rect width="400" height="500" fill="#17402a"/>
+          <g fill="none" stroke="#fff" stroke-opacity=".35" stroke-dasharray="6 7" stroke-width="2">
+            <circle cx="200" cy="330" r="60"/><circle cx="200" cy="330" r="115"/><circle cx="200" cy="330" r="170"/>
+          </g>
+          <text x="28" y="78" class="ph" font-size="54" fill="#f7b32b">DELIVERED</text>
+          <text x="28" y="134" class="ph" font-size="54" fill="#fff">TO YOU</text>
+          <g transform="translate(30 -45)">
+            <circle cx="130" cy="370" r="32" fill="none" stroke="#1d1d1d" stroke-width="12"/>
+            <circle cx="275" cy="370" r="32" fill="none" stroke="#1d1d1d" stroke-width="12"/>
+            <path d="M130 370 L175 316 L238 316 L275 370" stroke="#d9562a" stroke-width="12" fill="none" stroke-linejoin="round"/>
+            <path d="M170 316 L186 292 L226 292 L240 316Z" fill="#d9562a"/>
+            <path d="M246 316 L262 262 L280 262" stroke="#1d1d1d" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="92" y="262" width="80" height="52" fill="#f7b32b"/>
+            <text x="132" y="294" text-anchor="middle" class="ph" font-size="15" fill="#15241a">SHADORO</text>
+            <path d="M206 290 L222 238 L248 262" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="222" cy="220" r="17" fill="#f7b32b"/>
+          </g>
+          <rect x="28" y="398" width="270" height="72" fill="#f7b32b"/>
+          <text x="44" y="425" class="ps" font-size="15" fill="#15241a">Within 10 km of Ahero</text>
+          <text x="44" y="458" class="ph" font-size="30" fill="#15241a" id="del-label">FREE DELIVERY</text>
+        </svg>
+      </div>
+      <div class="dots" role="group" aria-label="Choose poster">
+        <button type="button" aria-label="Kienyeji hens" aria-current="true"></button>
+        <button type="button" aria-label="Kienyeji cocks"></button>
+        <button type="button" aria-label="Eggs"></button>
+        <button type="button" aria-label="Day-old chicks"></button>
+        <button type="button" aria-label="Delivery"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Why order from us">
+  <div class="wrap">
+    <ul>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><span><b>Pay your way</b>M-Pesa or cash on delivery</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10l-1-3h-3"/></svg><span><b id="trust-del">Free delivery</b><span id="trust-del2">within 10 km of Ahero</span></span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg><span><b>Checked on the farm</b>before it leaves</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.3M4 4v4h4"/></svg><span><b>Something wrong?</b>We replace it</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="tiles-sec" aria-labelledby="tiles-h">
+  <div class="wrap">
+    <h2 id="tiles-h" class="sr">Shop by category</h2>
+    <div class="tiles" id="tiles"></div>
+    <div class="deal" id="deal" hidden>
+      <div><b id="deal-title"></b><span id="deal-text"></span></div>
+      <div class="clock" aria-label="Time left"><span id="deal-clock"></span><small>left</small></div>
+      <button class="btn btn-yolk" type="button" id="deal-btn">See the offer</button>
+    </div>
+  </div>
+</section>
+
+<section id="shop" aria-labelledby="shop-h">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2 id="shop-h">What's on the farm this week</h2>
+        <p class="lede">Choose quantities, pay by M-Pesa if you like, then send the order to us on WhatsApp.</p>
+      </div>
+    </div>
+    <div class="shop">
+      <div>
+        <div class="cats" role="group" aria-label="Filter products" id="cats"></div>
+        <ul class="plist" id="plist"></ul>
+      </div>
+
+      <aside class="basket" id="basket" aria-labelledby="bk-h">
+        <h3 id="bk-h">Your order</h3>
+        <ul class="lines" id="lines"></ul>
+        <p class="empty" id="empty">Add items from the list to start your order.</p>
+        <div class="tot"><span>Items</span><span id="t-items">KES 0</span></div>
+        <div class="tot"><span>Delivery</span><span id="t-del">Choose your area</span></div>
+        <div class="tot big"><span>Total</span><span id="t-all">KES 0</span></div>
+
+        <label for="o-area">Delivery area</label>
+        <select id="o-area"></select>
+        <label for="o-name">Your name</label>
+        <input id="o-name" autocomplete="name" placeholder="e.g. Mary Achieng">
+        <label for="o-mark">Landmark or directions</label>
+        <textarea id="o-mark" placeholder="e.g. Next to Ahero Total petrol station, blue gate"></textarea>
+        <label for="o-when">When do you want it?</label>
+        <select id="o-when">
+          <option>As soon as possible</option>
+          <option>Tomorrow morning</option>
+          <option>Tomorrow afternoon</option>
+          <option>This weekend</option>
+        </select>
+        <p class="limit" id="limit-note" hidden>This order is above M-Pesa's limit of KES 250,000 per payment. Choose pay on delivery, or message us to pay in parts.</p>
+        <fieldset class="pay">
+          <legend>How will you pay?</legend>
+          <label class="opt" id="opt-stk" hidden><input type="radio" name="pay" value="stk"> Pay now with an M-Pesa prompt on my phone</label>
+          <label class="opt"><input type="radio" name="pay" value="till"> Pay now to Till 3267707 (Buy Goods)</label>
+          <label class="opt"><input type="radio" name="pay" value="cod"> Pay on delivery (M-Pesa or cash)</label>
+        </fieldset>
+
+        <div class="paybox" id="pb-stk" hidden>
+          <label for="o-phone">M-Pesa phone number</label>
+          <input id="o-phone" inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX">
+          <button class="btn btn-yolk" id="stk" type="button">Send M-Pesa prompt</button>
+          <p class="fine" id="stk-msg" aria-live="polite">You will get a prompt on your phone. Enter your M-Pesa PIN to pay Shadoro Limited.</p>
+        </div>
+
+        <div class="paybox" id="pb-till" hidden>
+          <ol class="tillsteps">
+            <li>Open M-Pesa, choose <b>Lipa na M-Pesa</b>, then <b>Buy Goods and Services</b>.</li>
+            <li>Till number <b class="till">3267707</b> <button type="button" class="copy" id="copy">Copy</button></li>
+            <li>Amount <b id="till-amt">KES 0</b>, then enter your PIN.</li>
+          </ol>
+          <label for="o-code">M-Pesa confirmation code</label>
+          <input id="o-code" autocapitalize="characters" maxlength="10" placeholder="e.g. TIR4K8XYZ2">
+        </div>
+
+        <button class="btn btn-wa" id="send" type="button">Send order on WhatsApp</button>
+        <p class="err" id="err" role="alert"></p>
+        <p class="fine">We confirm availability and delivery time on WhatsApp before we set off. Payments go to Shadoro Limited.</p>
+        <div class="done" id="done" hidden tabindex="-1" aria-live="polite">
+          <h3>Order <span id="done-ref"></span> is ready</h3>
+          <p>WhatsApp should now be open with your order written out. <b>Tap send in WhatsApp</b> to place it.</p>
+          <ol>
+            <li>We reply on WhatsApp to confirm stock and your delivery time. We reply within 30 minutes, 7am to 6pm.</li>
+            <li id="done-pay"></li>
+            <li>Keep your order number <b id="done-ref2"></b> in case you need to ask about it.</li>
+          </ol>
+          <a class="btn btn-line" id="done-again" target="_blank" rel="noopener">WhatsApp didn't open? Tap here</a>
+          <a class="btn btn-line" id="done-share" target="_blank" rel="noopener">Share Shadoro with a friend</a>
+          <button class="btn btn-yolk" id="done-new" type="button">Start a new order</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="deliver" id="deliver" aria-labelledby="dl-h">
+  <div class="wrap dgrid">
+    <div>
+      <h2 id="dl-h">Do we deliver to you?</h2>
+      <p class="lede">We deliver in rings around our farm in Ahero. The closer you are, the cheaper and faster it is. Pick your area or let the page find you.</p>
+      <div class="row">
+        <div>
+          <label for="d-area">Your area</label>
+          <select id="d-area"></select>
+        </div>
+        <button class="btn btn-line" id="locate" type="button">Use my location</button>
+      </div>
+      <div class="result" id="result" aria-live="polite">
+        <h3>Choose an area</h3>
+        <p>You will see the distance from our farm, the delivery fee and how soon it can reach you.</p>
+      </div>
+      <div class="zones" id="zones"></div>
+    </div>
+    <svg class="rings" id="rings" viewBox="-230 -230 460 460" role="img" aria-label="Map of delivery rings around Ahero"></svg>
+  </div>
+</section>
+
+<section class="farm" aria-labelledby="farm-h">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2 id="farm-h">From our farm in Ahero</h2>
+        <p class="lede">These are our own birds, raised on deep litter with clean water and feed every day. What you see here is what we deliver.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure><img src="farm-flock.jpg" alt="Our mixed flock of kienyeji hens and cocks in the poultry house" loading="lazy" width="560" height="700"><figcaption>The flock, hens in front and cocks at the back</figcaption></figure>
+      <figure><img src="farm-perch.jpg" alt="Hens on perches and around the feeder" loading="lazy" width="560" height="700"><figcaption>Room to perch, scratch and feed</figcaption></figure>
+      <figure><img src="farm-hens.jpg" alt="Close view of barred and brown kienyeji hens" loading="lazy" width="560" height="700"><figcaption>Healthy, well-grown birds</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="head"><h2 id="how-h">How ordering works</h2></div>
+    <ol>
+      <li><b>Pick your items</b><span>Eggs, chicken, chicks or point-of-lay hens, in the quantity you need.</span></li>
+      <li><b>Tell us where you are</b><span>Choose your area and add a landmark so the rider finds you.</span></li>
+      <li><b>Send it on WhatsApp</b><span>Your order arrives as a ready message. We reply with a confirmed time.</span></li>
+      <li><b>Pay your way</b><span>M-Pesa to Till 3267707 now, or M-Pesa or cash when it arrives.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="inst" id="bulk" aria-labelledby="bk2-h">
+  <div class="wrap">
+    <div>
+      <h2 id="bk2-h">Weekly supply for schools, hospitals and hotels</h2>
+      <p style="margin-top:1rem">Kitchens that need eggs and chicken every week get a fixed price, a standing delivery day and invoices that match your LPO. We have supplied schools and colleges in the region since 2019, so we know how procurement works.</p>
+      <div class="ctas" style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem">
+        <a class="btn btn-yolk" id="bulk-wa" target="_blank" rel="noopener">Request a bulk quote</a>
+        <a class="btn btn-line" href="tel:+254726510856">Call 0726 510 856</a>
+      </div>
+    </div>
+    <ul>
+      <li><b>Registered company.</b> Shadoro Limited, incorporated in Kenya in 2018 (PVT-AJUJ6PP).</li>
+      <li><b>Tax compliant.</b> KRA PIN and a current Tax Compliance Certificate, available on request for tenders.</li>
+      <li><b>LPOs and tenders welcome.</b> Delivery notes and invoices with every drop.</li>
+      <li><b>Consistent supply.</b> Standing weekly orders are reserved before open sales.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-h" hidden>
+  <div class="wrap">
+    <div class="head"><div><h2 id="rev-h">What customers say</h2><p class="lede" id="rev-sum"></p></div></div>
+    <div class="revs" id="revs"></div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faqwrap">
+    <div class="head"><h2 id="faq-h">Questions people ask</h2></div>
+    <details><summary>How fresh are the eggs?</summary><p>Eggs are collected daily and delivered within a few days of laying. Every tray is checked for cracks before it leaves the farm.</p></details>
+    <details><summary>Can I get the chicken slaughtered and cleaned?</summary><p>Yes. Choose "dressed" for a hen, cock or broiler and we deliver it slaughtered, cleaned and packed. Live birds are also available.</p></details>
+    <details><summary>Is there a minimum order?</summary><p>No minimum for eggs and chicken. Day-old chicks are sold from 50 upwards so they travel warm and safe.</p></details>
+    <details><summary>What if something is wrong with my order?</summary><p>Check your order when the rider arrives. Cracked eggs or a problem bird are replaced on the spot or on the next delivery.</p></details>
+    <details><summary>Can I pay before delivery?</summary><p>Yes. Pay to our Buy Goods Till 3267707 and put the M-Pesa confirmation code in your order. The name shown on the M-Pesa message confirms you are paying Shadoro.</p></details>
+    <details><summary>What if an item runs out after I pay?</summary><p>We check stock before every delivery. If something you paid for has run out, we call you the same day and you choose: a replacement, delivery on the next day it is available, or a full refund to your M-Pesa within 24 hours.</p></details>
+    <details><summary>Where exactly is the farm?</summary><p>Our office is at Monami Building, Nairobi Road, Ahero. You are welcome to collect orders there. Tell us on WhatsApp so we have it ready.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Shadoro Limited</h3>
+      <p>Monami Building, Nairobi Road, Ahero</p>
+      <p>P.O. Box 4160-40100, Kisumu</p>
+      <p style="margin-top:.8rem">Also from Shadoro: printing, branding and office stationery.</p>
+    </div>
+    <div>
+      <h3>Talk to us</h3>
+      <p><a href="tel:+254726510856">0726 510 856</a></p>
+      <p><a href="tel:+254788568218">0788 568 218</a></p>
+      <p><a href="mailto:shadoroltd@gmail.com">shadoroltd@gmail.com</a></p>
+    </div>
+    <div>
+      <h3>Hours</h3>
+      <p>Monday to Saturday, 7am to 6pm</p>
+      <p>Orders on WhatsApp any time</p>
+      <h3 style="margin-top:1.2rem">Help</h3>
+      <p><a id="track" target="_blank" rel="noopener">Ask about my order</a></p>
+      <p><a id="review-link" target="_blank" rel="noopener">Tell us how your order went</a></p>
+      <p><a id="share" target="_blank" rel="noopener">Share Shadoro with a friend</a></p>
+    </div>
+  </div>
+  <div class="wrap paybar">
+    <span class="pchip">M-Pesa Till 3267707</span><span class="pchip">M-Pesa prompt</span><span class="pchip">Cash on delivery</span>
+    <p>We only receive payments on Till 3267707, SHADORO LIMITED. Never pay anyone else claiming to be us.</p>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <span><b id="mb-count">0 items</b><br><small id="mb-total">KES 0</small></span>
+  <a class="btn btn-yolk" href="#basket">Review order</a>
+</div>
+<a class="float-wa" id="float-wa" target="_blank" rel="noopener" aria-label="Chat with Shadoro on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+/* ============ EDIT YOUR BUSINESS DETAILS HERE ============ */
+const WHATSAPP = "254726510856";           // number that receives orders (no + or spaces)
+const TILL = "3267707";                    // Safaricom Buy Goods till
+const MPESA_MAX = 250000;                  // Safaricom limit per M-Pesa payment (KES)
+// Leave empty until your Cloudflare Worker is live, then paste its address, e.g. "https://shadoro-pay.yourname.workers.dev"
+// If you ever change this address, also change it in the Content-Security-Policy line at the top of this file.
+const PAY_ENDPOINT = "https://shadoro-pay.shadoroltd.workers.dev";
+const FARM = { name:"Ahero (farm)", lat:-0.1745, lon:34.9186 };
+
+// OPTIONAL: a published Google Sheet (CSV link) to update prices and stock from your phone.
+// Columns: id, price, stock, left, note. Leave "" to use the list below.
+const STOCK_SHEET_URL = "";
+
+// Prices are placeholders — replace with your real prices.
+// stock: "in" = available, "low" = few left (also set left: number), "out" = sold out.
+// note: shown when sold out, e.g. note:"Back on Monday".
+// Optional per product:  was:1300 shows a crossed-out old price and a "-8%" badge (only use for real discounts)
+//                        tag:"Popular" shows a small label on the picture
+//                        img:"photo.jpg" uses your own photo (4:3, about 480 x 360); otherwise the drawing in art is used
+const PRODUCTS = [
+  { id:"egg-l",  cat:"Eggs",    name:"Eggs, tray of 30",          desc:"Fresh layer eggs, graded medium to large.",          price:420,  unit:"per tray", stock:"in", art:"eggs" },
+  { id:"egg-k",  cat:"Eggs",    name:"Kienyeji eggs, tray of 30", desc:"From free-range improved kienyeji hens.",            price:600,  unit:"per tray", stock:"in", art:"keggs" },
+  { id:"hen-l",  cat:"Chicken", sub:"Kienyeji hens",  name:"Kienyeji hen, live",     desc:"Mature improved kienyeji hen.",                 price:1000, unit:"per bird", stock:"in", img:"card-hen.jpg" },
+  { id:"hen-d",  cat:"Chicken", sub:"Kienyeji hens",  name:"Kienyeji hen, dressed",  desc:"Slaughtered, cleaned and packed.",              price:1200, unit:"per bird", stock:"in", art:"dressed" },
+  { id:"cock-l", cat:"Chicken", sub:"Kienyeji cocks", name:"Kienyeji cock, live",    desc:"Mature improved kienyeji cockerel, bigger bird.", price:1400, unit:"per bird", stock:"in", img:"card-cock.jpg" },
+  { id:"cock-d", cat:"Chicken", sub:"Kienyeji cocks", name:"Kienyeji cock, dressed", desc:"Slaughtered, cleaned and packed.",              price:1600, unit:"per bird", stock:"in", art:"dressed" },
+  { id:"bro-l",  cat:"Chicken", sub:"Broilers", name:"Broiler, live",             desc:"Six-week broiler, about 2 kg.",                      price:600,  unit:"per bird", stock:"in", art:"broiler" },
+  { id:"bro-d",  cat:"Chicken", sub:"Broilers", name:"Broiler, dressed",          desc:"Slaughtered, cleaned and packed.",                   price:700,  unit:"per bird", stock:"in", art:"dressed" },
+  { id:"chick",  cat:"For farmers", name:"Day-old chicks",        desc:"Improved kienyeji, vaccinated against Marek's.",     price:110,  unit:"per chick", min:50, stepBy:10, stock:"in", img:"card-chicks.jpg" },
+  { id:"pol",    cat:"For farmers", name:"Point-of-lay hens",     desc:"18 to 20 weeks, ready to start laying.",             price:850,  unit:"per hen", stock:"in", img:"card-layers.jpg" },
+  { id:"manure", cat:"For farmers", name:"Chicken manure",        desc:"Dry, bagged. Good for kitchen gardens and shambas.", price:300,  unit:"per bag", stock:"in", art:"manure" }
+];
+
+// OPTIONAL weekly offer banner with a countdown. Set on:true and a real end time to show it.
+const DEAL = { on:false, title:"Weekend offer", text:"Dressed kienyeji hens at KES 1,100 until Sunday evening.", ends:"2026-09-28T18:00:00+03:00", product:"hen-d" };
+
+// Customer reviews. Only add real ones, with the customer's permission. The section stays hidden while this is empty.
+// Example: { name:"Mary A.", area:"Kisumu CBD", stars:5, text:"Eggs arrived fresh and the rider was on time." }
+const REVIEWS = [];
+
+// Delivery rings in km from the farm. Fee in KES, and how soon it arrives.
+const ZONES = [
+  { upto:10, fee:0,   eta:"Same day",          label:"Up to 10 km" },
+  { upto:20, fee:150, eta:"Same or next day",  label:"10 to 20 km" },
+  { upto:35, fee:300, eta:"Next day",          label:"20 to 35 km" }
+];
+const BEYOND = { fee:null, eta:"Bulk orders only", label:"Over 35 km" };
+
+const AREAS = [
+  { name:"Ahero town", lat:-0.1745, lon:34.9186 },
+  { name:"Rabuor", lat:-0.123, lon:34.86 },
+  { name:"Pap Onditi", lat:-0.268, lon:34.93 },
+  { name:"Katito", lat:-0.267, lon:34.965 },
+  { name:"Awasi", lat:-0.162, lon:35.075 },
+  { name:"Kibos", lat:-0.05, lon:34.81 },
+  { name:"Kondele", lat:-0.083, lon:34.775 },
+  { name:"Kisumu CBD", lat:-0.0917, lon:34.768 },
+  { name:"Sondu", lat:-0.383, lon:35.017 },
+  { name:"Muhoroni", lat:-0.156, lon:35.198 },
+  { name:"Maseno", lat:-0.003, lon:34.6 }
+];
+/* ========================================================= */
+
+const fmt = n => "KES " + n.toLocaleString("en-KE");
+const $ = id => document.getElementById(id);
+const cart = {};
+const ORDER_REF = (()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");
+  return "SH"+p(d.getDate())+p(d.getMonth()+1)+"-"+Math.floor(1000+Math.random()*9000);})();
+let stkPaid = null;  // {ref, amount} after a successful prompt payment
+let meArea = null;   // last "use my location" result
+let area = null;     // {name, km}
+let filter = "All";
+
+function km(a,b){
+  const R=6371, r=x=>x*Math.PI/180;
+  const dLat=r(b.lat-a.lat), dLon=r(b.lon-a.lon);
+  const h=Math.sin(dLat/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLon/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+function zoneFor(d){ return ZONES.find(z=>d<=z.upto) || BEYOND; }
+AREAS.forEach(a=>a.km=km(FARM,a));
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+/* ---------- stock from Google Sheet (optional) ---------- */
+function parseCSV(t){
+  const rows=[];let row=[],cell="",q=false;
+  for(let i=0;i<t.length;i++){const c=t[i];
+    if(q){ if(c==='"'&&t[i+1]==='"'){cell+='"';i++;} else if(c==='"') q=false; else cell+=c; }
+    else if(c==='"') q=true; else if(c===","){row.push(cell);cell="";}
+    else if(c==="\n"||c==="\r"){ if(c==="\r"&&t[i+1]==="\n") i++; row.push(cell);rows.push(row);row=[];cell=""; }
+    else cell+=c; }
+  if(cell||row.length){row.push(cell);rows.push(row);}
+  return rows;
+}
+function applyStock(rows){
+  if(!rows.length) return;
+  const head=rows[0].map(x=>x.trim().toLowerCase()), col=n=>head.indexOf(n), get=(r,n)=>col(n)>=0?(r[col(n)]||"").trim():"";
+  rows.slice(1).forEach(r=>{
+    const p=PRODUCTS.find(x=>x.id===get(r,"id")); if(!p) return;
+    const price=parseInt(get(r,"price").replace(/[^0-9]/g,""),10); if(price>0) p.price=price;
+    const s=get(r,"stock").toLowerCase(); if(["in","low","out"].includes(s)) p.stock=s;
+    const left=parseInt(get(r,"left"),10); p.left = left>0 ? left : undefined;
+    if(col("note")>=0) p.note=get(r,"note");
+  });
+}
+function dropUnavailable(){
+  const changed=[];
+  Object.keys(cart).forEach(id=>{const p=PRODUCTS.find(x=>x.id===id);
+    if(p.stock==="out"){changed.push(p.name+" is sold out");delete cart[id];}
+    else if(p.stock==="low"&&p.left&&cart[id]>p.left){cart[id]=p.left;changed.push(p.name+" reduced to "+p.left);}});
+  if(changed.length) $("err").textContent="Stock changed: "+changed.join(", ")+". Check your total.";
+  return changed.length>0;
+}
+async function loadStock(){
+  if(!STOCK_SHEET_URL) return;
+  try{
+    const r=await fetch(STOCK_SHEET_URL+(STOCK_SHEET_URL.includes("?")?"&":"?")+"t="+Date.now());
+    if(!r.ok) return;
+    applyStock(parseCSV(await r.text()));
+  }catch(e){ /* keep the built-in list if the sheet can't be read */ }
+}
+async function refreshStock(){
+  await loadStock();
+  const changed = stkPaid ? false : dropUnavailable();
+  renderProducts(); renderBasket();
+  return changed;
+}
+
+/* ---------- hero posters ---------- */
+const posterEls=[...document.querySelectorAll(".poster")], dotEls=[...document.querySelectorAll(".dots button")];
+let posterIdx=0, posterTimer=null;
+function loadPosterImages(){ document.querySelectorAll(".poster image[data-href]").forEach(im=>{ im.setAttribute("href",im.dataset.href); im.removeAttribute("data-href"); }); }
+if(document.readyState==="complete") setTimeout(loadPosterImages,300); else addEventListener("load",()=>setTimeout(loadPosterImages,300));
+function showPoster(i){
+  loadPosterImages();
+  posterIdx=(i+posterEls.length)%posterEls.length;
+  posterEls.forEach((p,k)=>p.classList.toggle("on",k===posterIdx));
+  dotEls.forEach((d,k)=>d.setAttribute("aria-current",k===posterIdx?"true":"false"));
+}
+function startPosters(){
+  stopPosters();
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  posterTimer=setInterval(()=>showPoster(posterIdx+1),5000);
+}
+function stopPosters(){ if(posterTimer){clearInterval(posterTimer);posterTimer=null;} }
+dotEls.forEach((d,k)=>d.addEventListener("click",()=>{showPoster(k);startPosters();}));
+const posterBox=$("posters");
+posterBox.addEventListener("mouseenter",stopPosters); posterBox.addEventListener("mouseleave",startPosters);
+posterBox.addEventListener("focusin",stopPosters); posterBox.addEventListener("focusout",startPosters);
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){ stopPosters(); } else { startPosters(); refreshStock(); }
+});
+if(STOCK_SHEET_URL) setInterval(()=>{ if(!document.hidden) refreshStock(); }, 180000);
+function updatePosterPrices(){
+  document.querySelectorAll("[data-price]").forEach(t=>{const p=PRODUCTS.find(x=>x.id===t.dataset.price);if(p) t.textContent=fmt(p.price);});
+  const free=ZONES.find(z=>z.fee===0), lbl=$("del-label");
+  if(lbl) lbl.textContent = free ? "FREE DELIVERY" : "FAST DELIVERY";
+}
+
+/* ---------- product illustrations (used when a product has no photo) ---------- */
+const eggRow=(y,fill,shine,rx=26,ry=33)=>[80,160,240,320,400].map(x=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${fill}"/><ellipse cx="${x-8}" cy="${y-12}" rx="7" ry="11" fill="${shine}" opacity=".7"/>`).join("");
+const ART={
+  eggs:`<rect y="-60" width="480" height="480" fill="#fff1cc"/><rect x="30" y="70" width="420" height="250" rx="14" fill="#e3cfa6"/>${eggRow(130,"#b36b39","#d49361")}${eggRow(205,"#b36b39","#d49361")}${eggRow(280,"#b36b39","#d49361")}`,
+  keggs:`<rect y="-60" width="480" height="480" fill="#f4efe4"/><rect x="30" y="70" width="420" height="250" rx="14" fill="#dccbaa"/>${eggRow(130,"#e8cfa9","#fff4e0",23,29)}${eggRow(205,"#dfc198","#fff4e0",23,29)}${eggRow(280,"#e8cfa9","#fff4e0",23,29)}`,
+  dressed:`<rect y="-60" width="480" height="480" fill="#fbeee6"/><ellipse cx="240" cy="300" rx="175" ry="30" fill="#dfe7ea"/><ellipse cx="240" cy="294" rx="160" ry="24" fill="#eef3f5"/>
+    <path d="M178 176 C150 150 128 120 118 96" stroke="#e9b68a" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <path d="M302 176 C330 150 352 120 362 96" stroke="#e9b68a" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <circle cx="110" cy="84" r="13" fill="#fff8ee"/><circle cx="124" cy="80" r="11" fill="#fff8ee"/>
+    <circle cx="370" cy="84" r="13" fill="#fff8ee"/><circle cx="356" cy="80" r="11" fill="#fff8ee"/>
+    <ellipse cx="240" cy="228" rx="128" ry="74" fill="#f3cba4"/>
+    <ellipse cx="240" cy="212" rx="96" ry="46" fill="#f8dcc0"/>
+    <path d="M140 250 q-26 -8 -30 -34 q22 -6 40 14z" fill="#e9b68a"/><path d="M340 250 q26 -8 30 -34 q-22 -6 -40 14z" fill="#e9b68a"/>
+    <path d="M240 172 v108" stroke="#e7b086" stroke-width="3" opacity=".6"/>
+    <g fill="#e2a87c" opacity=".55"><circle cx="200" cy="232" r="2.5"/><circle cx="222" cy="252" r="2.5"/><circle cx="262" cy="244" r="2.5"/><circle cx="286" cy="226" r="2.5"/><circle cx="252" cy="266" r="2.5"/><circle cx="214" cy="206" r="2.5"/></g>`,
+  broiler:`<rect y="-60" width="480" height="480" fill="#e6f1e8"/><ellipse cx="240" cy="318" rx="130" ry="12" fill="#000" opacity=".08"/>
+    <line x1="215" y1="270" x2="208" y2="315" stroke="#f0a92c" stroke-width="9" stroke-linecap="round"/><line x1="262" y1="270" x2="268" y2="315" stroke="#f0a92c" stroke-width="9" stroke-linecap="round"/>
+    <path d="M150 210 q-40 -60 -10 -100 q10 50 40 70z" fill="#f4f4f1"/><ellipse cx="238" cy="215" rx="100" ry="72" fill="#fbfbf8"/><ellipse cx="235" cy="222" rx="58" ry="34" fill="#ecece6"/>
+    <circle cx="318" cy="138" r="36" fill="#fbfbf8"/><path d="M296 112 q6 -24 14 -4 q6 -24 14 -4 q6 -22 12 0 q-20 10 -40 8z" fill="#d7372a"/>
+    <circle cx="328" cy="132" r="5" fill="#1d1d1d"/><polygon points="350,138 374,146 350,154" fill="#f0a92c"/><ellipse cx="346" cy="166" rx="7" ry="11" fill="#d7372a"/>`,
+  manure:`<rect y="-60" width="480" height="480" fill="#efe6d6"/><ellipse cx="240" cy="322" rx="120" ry="12" fill="#000" opacity=".1"/>
+    <path d="M150 110 q90 -30 180 0 l20 200 q-110 25 -220 0z" fill="#c9a26a"/><path d="M150 110 q90 -30 180 0 q-90 22 -180 0z" fill="#b48d57"/>
+    <path d="M205 80 q35 -24 70 0 l-8 30 q-27 -10 -54 0z" fill="#b48d57"/>
+    <circle cx="240" cy="215" r="44" fill="#2c6a44"/><path d="M222 232 q0 -40 36 -48 q-4 38 -36 48z" fill="#bfe3c6"/><path d="M226 228 l26 -30" stroke="#2c6a44" stroke-width="3"/>`
+};
+function picHTML(p){
+  if(p.img) return `<img src="${p.img}" alt="${esc(p.name)}" loading="lazy" width="480" height="480">`;
+  return `<svg viewBox="0 -60 480 480" role="img" aria-label="${esc(p.name)}">${ART[p.art]||ART.eggs}</svg>`;
+}
+
+/* ---------- products ---------- */
+const groupOf=p=>p.sub||p.cat;
+function renderCats(){
+  const cats=["All",...new Set(PRODUCTS.map(groupOf))];
+  $("cats").innerHTML=cats.map(c=>`<button class="chip" type="button" aria-pressed="${c===filter}" data-c="${c}">${c}</button>`).join("");
+}
+function setFilter(c,scroll){
+  filter=c; renderCats(); renderProducts();
+  if(scroll) $("shop").scrollIntoView({behavior:"smooth"});
+}
+$("cats").addEventListener("click",e=>{
+  const b=e.target.closest("[data-c]"); if(!b) return;
+  setFilter(b.dataset.c,false);
+});
+function renderProducts(){
+  updatePosterPrices(); updateTileFrom();
+  let last=null;
+  $("plist").innerHTML=PRODUCTS.filter(p=>filter==="All"||groupOf(p)===filter).map(p=>{
+    const g=groupOf(p), head = "";   // continuous grid like marketplaces; chips and tiles do the grouping
+    last=g;
+    return head + productRow(p);
+  }).join("");
+}
+function productRow(p){
+  const q=cart[p.id]||0, out=p.stock==="out";
+  const off = p.was && p.was>p.price ? Math.round((1-p.price/p.was)*100) : 0;
+  const badges = [
+    off ? `<span class="tagb deal">-${off}%</span>` : "",
+    p.tag ? `<span class="tagb">${esc(p.tag)}</span>` : "",
+    out ? `<span class="tagb out">Sold out</span>` : (p.stock==="low" && p.left ? `<span class="tagb low">Only ${p.left} left</span>` : "")
+  ].join("");
+  const action = out
+    ? `<a class="btn btn-line notify" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, please tell me when "+p.name+" is back in stock.")}">Tell me when it's back</a>`
+    : q===0
+      ? `<button type="button" class="btn add" data-d="1" aria-label="Add ${p.name}">Add${p.min?` ${p.min}`:""}</button>`
+      : `<div class="step"><button type="button" data-d="-1" aria-label="Remove one ${p.name}">−</button><output aria-live="polite" aria-label="Quantity of ${p.name}">${q}</output><button type="button" data-d="1" aria-label="Add one ${p.name}">+</button></div>`;
+  return `<li class="card${q?" on":""}${out?" soldout":""}" data-id="${p.id}">
+    <div class="pic">${picHTML(p)}<div class="tags">${badges}</div></div>
+    <div class="cbody">
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}${p.min?` <span class="minnote">Minimum ${p.min}.</span>`:""}${out&&p.note?` <span class="minnote">${esc(p.note)}</span>`:""}</p>
+      <div class="price"><strong>${fmt(p.price)}</strong>${off?`<s>${fmt(p.was)}</s>`:""}<span>${p.unit}</span></div>
+      ${action}
+    </div></li>`;
+}
+$("plist").addEventListener("click",e=>{
+  const b=e.target.closest("[data-d]"); if(!b) return;
+  if(stkPaid){ $("err").textContent="This order is already paid. Send it on WhatsApp, or message us to change it."; return; }
+  const id=b.closest("[data-id]").dataset.id, p=PRODUCTS.find(x=>x.id===id);
+  const step=p.stepBy||1, min=p.min||1;
+  let q=cart[id]||0;
+  if(p.stock==="out") return;
+  if(+b.dataset.d>0){
+    const next = q===0 ? min : q+step;
+    if(p.stock==="low" && p.left && next>p.left){ $("err").textContent=`Only ${p.left} left of ${p.name} today. Message us on WhatsApp for more.`; return; }
+    q=next;
+  }
+  else q = q-step < min ? 0 : q-step;
+  $("err").textContent="";
+  if(q) cart[id]=q; else delete cart[id];
+  renderProducts(); renderBasket();
+});
+
+/* ---------- announcement, trust strip, tiles, deal ---------- */
+(function(){
+  const free=ZONES.find(z=>z.fee===0);
+  const parts=[ free ? `Free delivery within ${free.upto} km of Ahero` : "Delivery around Ahero and Kisumu",
+                "Order before 11am for same-day delivery", `Pay by M-Pesa Till ${TILL} or on delivery`];
+  $("announce").innerHTML=parts.map(t=>`<span>${t}</span>`).join("");
+  if(free){ $("trust-del2").textContent=`within ${free.upto} km of Ahero`; }
+  else { $("trust-del").textContent="Delivered to you"; $("trust-del2").textContent="around Ahero and Kisumu"; }
+  const TILES=[["Eggs","eggs"],["Kienyeji hens","hen"],["Kienyeji cocks","cock"],["Broilers","broiler"],["For farmers","chicks"]];
+  const tilePic={eggs:ART.eggs,broiler:ART.broiler};
+  const tileImg={hen:"card-hen.jpg",cock:"card-cock.jpg",chicks:"card-chicks.jpg"};
+  $("tiles").innerHTML=TILES.filter(([g])=>PRODUCTS.some(p=>groupOf(p)===g)).map(([g,k])=>{
+    const from=Math.min(...PRODUCTS.filter(p=>groupOf(p)===g).map(p=>p.price));
+    const pic= tileImg[k] ? `<img src="${tileImg[k]}" alt="" loading="lazy" width="480" height="480">` : `<svg viewBox="0 0 480 360" aria-hidden="true">${tilePic[k]}</svg>`;
+    return `<button type="button" class="tile" data-g="${g}"><span class="tpic">${pic}</span><span class="tname">${g}</span><span class="tfrom" data-from="${g}">from ${fmt(from)}</span></button>`;
+  }).join("")+`<a class="tile tile-bulk" href="#bulk"><span class="tpic"><svg viewBox="0 0 480 360" aria-hidden="true"><rect y="-60" width="480" height="480" fill="#17402a"/><text x="240" y="200" text-anchor="middle" font-family="Bricolage,Arial" font-weight="800" font-size="64" fill="#f7b32b">BULK</text></svg></span><span class="tname">Schools &amp; hotels</span><span class="tfrom">weekly supply</span></a>`;
+  $("tiles").addEventListener("click",e=>{const t=e.target.closest("[data-g]"); if(t) setFilter(t.dataset.g,true);});
+})();
+function updateTileFrom(){
+  document.querySelectorAll("[data-from]").forEach(el=>{const ps=PRODUCTS.filter(p=>groupOf(p)===el.dataset.from&&p.stock!=="out");
+    el.textContent= ps.length ? "from "+fmt(Math.min(...ps.map(p=>p.price))) : "sold out";});
+}
+(function(){
+  if(!DEAL.on) return;
+  const end=new Date(DEAL.ends).getTime(); if(!(end>Date.now())) return;
+  $("deal").hidden=false; $("deal-title").textContent=DEAL.title; $("deal-text").textContent=DEAL.text;
+  const tick=()=>{ const ms=end-Date.now(); if(ms<=0){ $("deal").hidden=true; clearInterval(iv); return; }
+    const d=Math.floor(ms/864e5), hh=Math.floor(ms/36e5)%24, mm=Math.floor(ms/6e4)%60, ss=Math.floor(ms/1e3)%60, p2=n=>String(n).padStart(2,"0");
+    $("deal-clock").textContent=(d?d+"d ":"")+p2(hh)+":"+p2(mm)+":"+p2(ss); };
+  const iv=setInterval(tick,1000); tick();
+  $("deal-btn").addEventListener("click",()=>{ const p=PRODUCTS.find(x=>x.id===DEAL.product); setFilter(p?groupOf(p):"All",true); });
+})();
+
+/* ---------- basket ---------- */
+function totals(){
+  const items=Object.entries(cart).reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===id).price*q,0);
+  const z=area?zoneFor(area.km):null;
+  const del=z&&z.fee!=null?z.fee:0;
+  return {items,del,z,all:items+del};
+}
+function renderBasket(){
+  const ids=Object.keys(cart), t=totals();
+  $("lines").innerHTML=ids.map(id=>{const p=PRODUCTS.find(x=>x.id===id);return `<li><span>${cart[id]} × ${p.name}</span><span>${fmt(p.price*cart[id])}</span></li>`}).join("");
+  $("empty").hidden=ids.length>0;
+  $("t-items").textContent=fmt(t.items);
+  $("t-del").textContent=!t.z?"Choose your area":t.z.fee==null?"We will quote":t.z.fee===0?"Free":fmt(t.z.fee);
+  $("t-all").textContent=fmt(t.all);
+  const n=ids.reduce((s,id)=>s+cart[id],0);
+  $("mb-count").textContent=n+(n===1?" item":" items");
+  $("mb-total").textContent=fmt(t.all);
+  $("mbar").classList.toggle("show",n>0);
+  const hb=$("hdr-basket"); hb.href = n ? "#basket" : "#shop";
+  hb.innerHTML = n ? `Basket <span class="count">${n}</span>` : "Order now";
+  $("till-amt").textContent=fmt(t.all);
+  $("limit-note").hidden = t.all<=MPESA_MAX;
+  $("stk").textContent=stkPaid?"Paid":t.all>0?"Send M-Pesa prompt of "+fmt(t.all):"Send M-Pesa prompt";
+}
+function areaOptions(sel){
+  sel.innerHTML=`<option value="">Select your area</option>`+AREAS.map((a,i)=>`<option value="${i}">${a.name} (about ${Math.round(a.km)} km)</option>`).join("")+`<option value="other">Somewhere else</option>`;
+}
+areaOptions($("o-area")); areaOptions($("d-area"));
+function setArea(val,source){
+  if(stkPaid){ $("err").textContent="This order is already paid. Message us on WhatsApp to change the delivery area."; syncSelects(); return; }
+  if(val==="" ){ area=null; }
+  else if(val==="other"){ area={name:"Other area",km:Infinity}; }
+  else if(val==="me"){ area=meArea; }
+  else if(typeof val==="object"){ area=val; meArea=val;
+    ["o-area","d-area"].forEach(id=>{const s=$(id);let o=s.querySelector('option[value="me"]');
+      if(!o){o=document.createElement("option");o.value="me";s.insertBefore(o,s.options[1]);}
+      o.textContent=`My location (about ${Math.round(val.km)} km)`;});
+  }
+  else { const a=AREAS[+val]; area={name:a.name,km:a.km,idx:+val}; }
+  syncSelects(source);
+  renderBasket(); renderResult(); drawRings();
+}
+function syncSelects(source){
+  const v=!area?"":area.me?"me":area.idx!=null?String(area.idx):area.km===Infinity?"other":"";
+  if(source!=="o") $("o-area").value=v;
+  if(source!=="d") $("d-area").value=v;
+}
+$("o-area").addEventListener("change",e=>setArea(e.target.value,"o"));
+$("d-area").addEventListener("change",e=>setArea(e.target.value,"d"));
+
+$("send").addEventListener("click",()=>{
+  const err=$("err");
+  if(!stkPaid && dropUnavailable()){ renderProducts(); renderBasket(); return; }
+  const ids=Object.keys(cart);
+  if(!ids.length){err.textContent="Add at least one item to your order.";return;}
+  if(!area){err.textContent="Choose your delivery area so we can plan the trip.";$("o-area").focus();return;}
+  if(!$("o-name").value.trim()){err.textContent="Add your name so the rider knows who to ask for.";$("o-name").focus();return;}
+  const pay=payMethod(), t=totals();
+  if(pay!=="cod" && t.z.fee==null){err.textContent="We need to quote delivery to your area first. Choose pay on delivery, or ask us on WhatsApp.";return;}
+  if(pay!=="cod" && !stkPaid && t.all>MPESA_MAX){err.textContent=`M-Pesa allows up to ${fmt(MPESA_MAX)} per payment. Choose pay on delivery, or message us to pay in parts.`;return;}
+  if(pay==="stk" && !stkPaid){err.textContent="Send the M-Pesa prompt and complete the payment first.";return;}
+  let code="";
+  if(pay==="till"){
+    code=$("o-code").value.trim().toUpperCase();
+    if(!/^[A-Z0-9]{10}$/.test(code)){err.textContent="Enter the 10-character code from your M-Pesa message, e.g. TIR4K8XYZ2.";$("o-code").focus();return;}
+  }
+  err.textContent="";
+  const payLine = pay==="stk" ? `PAID ${fmt(stkPaid.amount)} via M-Pesa prompt (ref ${stkPaid.ref})`
+                : pay==="till" ? `PAID ${fmt(t.all)} to Till ${TILL}, M-Pesa code ${code}`
+                : "On delivery (M-Pesa or cash)";
+  const lines=ids.map(id=>{const p=PRODUCTS.find(x=>x.id===id);return `- ${cart[id]} x ${p.name} = ${fmt(p.price*cart[id])}`}).join("\n");
+  const dist=area.km===Infinity?"":` (about ${Math.round(area.km)} km)`;
+  const msg=`Hello Shadoro, I would like to order (Order ${ORDER_REF}):\n${lines}\n\nItems: ${fmt(t.items)}\nDelivery: ${t.z.fee==null?"please quote":t.z.fee===0?"Free":fmt(t.z.fee)}\nTotal: ${fmt(t.all)}\n\nName: ${$("o-name").value.trim()}\nArea: ${area.name}${dist}\nLandmark: ${$("o-mark").value.trim()||"-"}\nWhen: ${$("o-when").value}\nPayment: ${payLine}`;
+  openWhatsApp(msg);
+  showDone(pay,t,msg);
+});
+function showDone(pay,t,msg){
+  $("done-ref").textContent=ORDER_REF; $("done-ref2").textContent=ORDER_REF;
+  $("done-pay").textContent = pay==="cod" ? `Pay ${fmt(t.all)} by M-Pesa or cash when the order arrives.`
+    : `We check your payment of ${fmt(stkPaid?stkPaid.amount:t.all)} against our M-Pesa statement before we dispatch.`;
+  $("done-again").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  $("done").hidden=false; $("done").focus({preventScroll:true});
+  $("done").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+$("done-new").addEventListener("click",()=>location.reload());
+function openWhatsApp(text){
+  const url=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  let w=null;
+  try{ w=window.open(url,"_blank"); }catch(e){}
+  if(w){ try{ w.opener=null; }catch(e){} }
+  else{ location.href=url; }   // popup blocked (e.g. in-app browsers): open in the same tab
+}
+
+/* ---------- payment ---------- */
+function payMethod(){ const r=document.querySelector('input[name="pay"]:checked'); return r?r.value:"cod"; }
+function showPay(){
+  const m=payMethod();
+  $("pb-stk").hidden=m!=="stk"; $("pb-till").hidden=m!=="till"; $("err").textContent="";
+}
+document.querySelectorAll('input[name="pay"]').forEach(r=>r.addEventListener("change",showPay));
+if(PAY_ENDPOINT){ $("opt-stk").hidden=false; document.querySelector('input[value="stk"]').checked=true; }
+else { document.querySelector('input[value="till"]').checked=true; }
+showPay();
+
+$("copy").addEventListener("click",async()=>{
+  try{ await navigator.clipboard.writeText(TILL); $("copy").textContent="Copied"; }
+  catch(e){ $("copy").textContent="Till "+TILL; }
+  setTimeout(()=>{$("copy").textContent="Copy";},2000);
+});
+
+function normPhone(s){
+  const d=s.replace(/\D/g,"");
+  if(/^0[17]\d{8}$/.test(d)) return "254"+d.slice(1);
+  if(/^254[17]\d{8}$/.test(d)) return d;
+  if(/^[17]\d{8}$/.test(d)) return "254"+d;
+  return null;
+}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+$("stk").addEventListener("click",async()=>{
+  if(stkPaid) return;
+  const err=$("err"), msg=$("stk-msg"), btn=$("stk"), t=totals();
+  if(!Object.keys(cart).length){err.textContent="Add at least one item before paying.";return;}
+  if(!area){err.textContent="Choose your delivery area so the total includes delivery.";$("o-area").focus();return;}
+  if(t.z.fee==null){err.textContent="We need to quote delivery to your area first. Ask us on WhatsApp.";return;}
+  if(t.all>MPESA_MAX){err.textContent=`M-Pesa allows up to ${fmt(MPESA_MAX)} per payment. Choose pay on delivery, or message us to pay in parts.`;return;}
+  if(await refreshStock()){ msg.textContent="Your order changed because of stock. Check the total, then send the prompt again."; return; }
+  if(!Object.keys(cart).length){err.textContent="Sorry, the items in your order have just sold out.";return;}
+  const phone=normPhone($("o-phone").value);
+  if(!phone){err.textContent="Enter a Safaricom number like 0712 345 678.";$("o-phone").focus();return;}
+  err.textContent=""; btn.disabled=true; msg.textContent="Sending the prompt to your phone…";
+  try{
+    let res,data;
+    try{
+      res=await fetch(PAY_ENDPOINT.replace(/\/$/,"")+"/stk",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({phone,amount:t.all,ref:ORDER_REF})});
+      data=await res.json();
+    }catch(netErr){ throw new Error("We could not reach M-Pesa. Check your internet connection."); }
+    if(!res.ok||!data.checkoutId) throw new Error(data.error||"The prompt could not be sent.");
+    msg.textContent="Check your phone and enter your M-Pesa PIN. Waiting for confirmation…";
+    for(let i=0;i<18;i++){          // up to about 90 seconds
+      await sleep(5000);
+      let s;
+      try{ s=await (await fetch(PAY_ENDPOINT.replace(/\/$/,"")+"/status?id="+encodeURIComponent(data.checkoutId))).json(); }
+      catch(netErr){ continue; }            // a dropped connection is not a failed payment: keep waiting
+      if(!s || s.status==="pending" || !s.status) continue;
+      if(s.status==="paid"){
+        stkPaid={ref:data.checkoutId.slice(-10),amount:t.all};
+        msg.innerHTML=`<span class="paid">Payment received: ${fmt(t.all)}.</span> Now send your order on WhatsApp.`;
+        document.querySelectorAll('input[name="pay"]').forEach(r=>{ r.disabled = r.value!=="stk"; });
+        $("o-phone").disabled=true;
+        renderBasket(); return;
+      }
+      throw new Error(s.message||"The payment did not go through.");
+    }
+    throw new Error("We did not get a confirmation in time. If money left your account, send the order and include your M-Pesa code.");
+  }catch(e){
+    msg.textContent=e.message+" You can try again or pay to Till "+TILL+".";
+  }finally{ btn.disabled=!!stkPaid; }
+});
+
+/* hide the floating order bar while the order form is on screen */
+let basketVisible=false;
+if("IntersectionObserver" in window){
+  new IntersectionObserver(es=>{ basketVisible=es[0].isIntersecting; $("mbar").classList.toggle("away",basketVisible); $("float-wa").classList.toggle("away",basketVisible && innerWidth<=960); },{threshold:0.05}).observe($("basket"));
+}
+
+/* ---------- delivery checker ---------- */
+$("zones").innerHTML=[...ZONES,BEYOND].map(z=>`<div><b>${z.fee==null?"Quote":z.fee===0?"Free":fmt(z.fee)}</b>${z.label}<br><span style="color:var(--muted)">${z.eta}</span></div>`).join("");
+function renderResult(){
+  const r=$("result");
+  if(!area){r.className="result";r.innerHTML=`<h3>Choose an area</h3><p>You will see the distance from our farm, the delivery fee and how soon it can reach you.</p>`;return;}
+  if(area.km===Infinity){r.className="result far";r.innerHTML=`<h3>Tell us where you are</h3><p>Send us your location on WhatsApp and we will confirm the fee. Bulk and institutional orders are delivered further afield.</p>`;return;}
+  const z=zoneFor(area.km), d=Math.round(area.km*10)/10;
+  if(z===BEYOND){r.className="result far";r.innerHTML=`<h3>${area.name} is about ${d} km away</h3><p>That is beyond our regular rider routes. We deliver there for bulk orders — send us a message for a quote.</p>`;return;}
+  r.className="result";
+  r.innerHTML=`<h3>Yes, we deliver to ${area.name}</h3><p>About ${d} km from our farm. Delivery ${z.fee===0?"is free":"costs "+fmt(z.fee)}, ${z.eta.toLowerCase()}.</p>`;
+}
+$("locate").addEventListener("click",()=>{
+  const r=$("result");
+  if(!navigator.geolocation){r.className="result far";r.innerHTML=`<h3>Location is not available here</h3><p>Pick your area from the list instead.</p>`;return;}
+  $("locate").textContent="Finding you…";
+  navigator.geolocation.getCurrentPosition(pos=>{
+    $("locate").textContent="Use my location";
+    const me={lat:pos.coords.latitude,lon:pos.coords.longitude};
+    let near=AREAS[0],best=Infinity; AREAS.forEach(a=>{const d=km(me,a);if(d<best){best=d;near=a;}});
+    setArea({name:"your location (near "+near.name+")",km:km(FARM,me),me},"x");
+  },()=>{
+    $("locate").textContent="Use my location";
+    r.className="result far";r.innerHTML=`<h3>We could not read your location</h3><p>Allow location access in your browser, or pick your area from the list.</p>`;
+  },{timeout:10000});
+});
+
+/* ---------- ring map ---------- */
+const SCALE=200/40; // px per km, 40 km reaches the edge
+function proj(p){
+  const x=(p.lon-FARM.lon)*111.32*Math.cos(FARM.lat*Math.PI/180);
+  const y=(p.lat-FARM.lat)*110.57;
+  return [x*SCALE,-y*SCALE];
+}
+function drawRings(){
+  const cls=["zA","zB","zC"];
+  let s=ZONES.slice().reverse().map((z,i)=>`<circle class="${cls[ZONES.length-1-i]}" r="${z.upto*SCALE}"/><circle class="ring" r="${z.upto*SCALE}"/>`).join("");
+  s+=ZONES.map(z=>`<text class="rl" x="4" y="${-z.upto*SCALE+13}">${z.upto} km</text>`).join("");
+  s+=`<text x="-196" y="-208" style="font-size:10px;fill:var(--muted)">N ↑</text>`;
+  // label placement so nearby towns don't overlap: [dx, dy, anchor]
+  const LBL={"Kisumu CBD":[-10,4,"end"],"Kondele":[9,-4,"start"],"Pap Onditi":[-10,4,"end"],"Katito":[10,4,"start"],
+             "Awasi":[0,-11,"middle"],"Muhoroni":[0,18,"middle"],"Rabuor":[-10,4,"end"],"Kibos":[10,4,"start"],
+             "Maseno":[10,4,"start"],"Sondu":[10,4,"start"]};
+  s+=AREAS.slice(1).map((a,i)=>{const [x,y]=proj(a);const sel=area&&area.idx===i+1;
+    const [dx,dy,anchor]=LBL[a.name]||(x>120?[-10,4,"end"]:[10,4,"start"]);
+    return `<g class="town ${sel?"sel":""}" data-i="${i+1}" tabindex="0" role="button" aria-label="${a.name}, about ${Math.round(a.km)} km"><circle cx="${x}" cy="${y}" r="5"/><text x="${x+dx}" y="${y+dy}" text-anchor="${anchor}">${a.name}</text></g>`}).join("");
+  if(area&&area.me){const [x,y]=proj(area.me);s+=`<circle cx="${x}" cy="${y}" r="8" fill="var(--ember)" stroke="#fff" stroke-width="2"/><text x="${x+11}" y="${y+4}" font-weight="700">You</text>`;}
+  s+=`<circle class="home" r="10"/><text x="0" y="27" text-anchor="middle" font-weight="700">Our farm, Ahero</text>`;
+  $("rings").innerHTML=s;
+}
+$("rings").addEventListener("click",e=>{const g=e.target.closest(".town");if(g)setArea(g.dataset.i,"x");});
+$("rings").addEventListener("keydown",e=>{const g=e.target.closest(".town");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();setArea(g.dataset.i,"x");}});
+
+/* ---------- reviews, help and sharing ---------- */
+if(REVIEWS.length){
+  $("reviews").hidden=false;
+  const avg=REVIEWS.reduce((s,r)=>s+(+r.stars||5),0)/REVIEWS.length;
+  $("rev-sum").textContent=`${avg.toFixed(1)} out of 5 from ${REVIEWS.length} customer${REVIEWS.length>1?"s":""}`;
+  $("revs").innerHTML=REVIEWS.map(r=>`<figure class="rev"><div class="stars" aria-label="${+r.stars||5} out of 5">${"★".repeat(+r.stars||5)}${"☆".repeat(5-(+r.stars||5))}</div><blockquote>${esc(r.text)}</blockquote><figcaption>${esc(r.name)}${r.area?`, ${esc(r.area)}`:""}</figcaption></figure>`).join("");
+}
+const SITE_URL=(document.querySelector('link[rel="canonical"]')||{}).href||location.href.split("#")[0];
+const shareHref=`https://wa.me/?text=${encodeURIComponent("I buy my eggs and kienyeji chicken from Shadoro Poultry in Ahero. Order here: "+SITE_URL)}`;
+$("share").href=shareHref; $("done-share").href=shareHref;
+$("track").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, I would like to ask about my order. Order number: ")}`;
+$("review-link").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, here is my feedback on my order: ")}`;
+
+/* ---------- links ---------- */
+$("float-wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, I would like to ask about eggs and chicken.")}`;
+$("bulk-wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Hello Shadoro, we are an institution and would like a quote for weekly supply of eggs/chicken.\nInstitution:\nLocation:\nWeekly quantity:")}`;
+
+renderCats(); renderProducts(); renderBasket(); drawRings(); startPosters(); refreshStock();
+</script>
+</body>
+</html>
